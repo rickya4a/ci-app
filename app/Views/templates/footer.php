@@ -19,7 +19,7 @@
                 <li>
                   <div class="recent-post-widget">
                     <a href="#" class="widget-img-thumb">
-                      <img src="images/post-1.jpg" class="img-responsive">
+                      <img src="assets/images/post-1.jpg" class="img-responsive">
                     </a>
                     <div class="widget-content">
                       <h5><a href="#" class="sidebar-item-title">Enterprise Video Solutions</a></h5>
@@ -33,7 +33,7 @@
                 <li>
                   <div class="recent-post-widget">
                     <a href="#" class="widget-img-thumb">
-                      <img src="images/post-2.jpg" class="img-responsive">
+                      <img src="assets/images/post-2.jpg" class="img-responsive">
                     </a>
                     <div class="widget-content">
                       <h5><a href="#" class="sidebar-item-title">Medical Instruments</a></h5>
@@ -101,13 +101,13 @@
     </section>
     <?= script_tag('assets/js/jquery.min.js') ?>
     <?= script_tag('assets/js/bootstrap.min.js') ?>
-    <?= link_tag('assets/js/jquery.plugin.min.js') ?>
-    <?= link_tag('assets/js/jquery.isotope.min.js') ?>
-    <?= link_tag('assets/js/jquery.magnific-popup.min.js') ?>
-    <?= link_tag('assets/js/bootstrap-dropdownhover.min.js') ?>
-    <?= link_tag('assets/js/wow.min.js') ?>
-    <?= link_tag('assets/js/waypoints.min.js') ?>
-    <?= link_tag('assets/js/jquery.counterup.min.js') ?>
-    <?= link_tag('assets/js/main.js') ?>
+    <?= script_tag('assets/js/jquery.plugin.min.js') ?>
+    <?= script_tag('assets/js/jquery.isotope.min.js') ?>
+    <?= script_tag('assets/js/jquery.magnific-popup.min.js') ?>
+    <?= script_tag('assets/js/bootstrap-dropdownhover.min.js') ?>
+    <?= script_tag('assets/js/wow.min.js') ?>
+    <?= script_tag('assets/js/waypoints.min.js') ?>
+    <?= script_tag('assets/js/jquery.counterup.min.js') ?>
+    <?= script_tag('assets/js/main.js') ?>
   </body>
 </html>
