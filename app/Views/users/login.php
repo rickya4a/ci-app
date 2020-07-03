@@ -3,7 +3,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <div class="avatar">
-          <img src="images/avatar.png" alt="Avatar">
+          <img src="<?php echo base_url('assets/images/avatar.png') ?>" alt="Avatar">
         </div>
         <h4 class="modal-title">Member Login</h4>
         <button

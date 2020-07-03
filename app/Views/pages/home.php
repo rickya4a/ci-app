@@ -24,7 +24,7 @@
     <!-- Carousel inner -->
     <div class="carousel-inner">
 
-      <div class="item active" style="background-image:url(images/slide/1.jpg)">
+      <div class="item active" style="background-image:url(assets/images/slide/1.jpg)">
             <div class="slider-content text-left">
                <div class="col-md-12">
                    <!-- <h2 class="slide-title effect2">Empowering People</h2>
@@ -39,7 +39,7 @@
        </div><!--/ Carousel item 1 end -->
 
 
-      <div class="item" style="background-image:url(images/slide/2.jpg)">
+      <div class="item" style="background-image:url(assets/images/slide/2.jpg)">
             <div class="slider-content">
                <div class="col-md-12 text-center">
                    <!-- <h2 class="slide-title effect4">Of care every day</h2>
@@ -52,7 +52,7 @@
        </div><!--/ Carousel item 2 end -->
 
 
-       <div class="item" style="background-image:url(images/slide/3.jpg)">
+       <div class="item" style="background-image:url(assets/images/slide/3.jpg)">
             <div class="slider-content text-right">
                <div class="col-md-12">
                    <!-- <h2 class="slide-title effect6">To better healthcare</h2>
@@ -142,7 +142,7 @@
       </div>
       <div class="col-md-3 col-sm-6 my-team-member wow fadeInUp">
         <div class="my-member-img">
-          <img src="images/team/1.jpg" class="img-responsive" alt="team01">
+          <img src="<?php echo base_url('assets/images/team/1.jpg') ?>" class="img-responsive" alt="team01">
         </div>
         <div class="my-team-detail text-center">
           <h4 class="my-member-name"><a href ="#">TEST</a></h4>
