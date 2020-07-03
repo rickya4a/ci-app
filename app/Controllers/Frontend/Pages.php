@@ -1,6 +1,8 @@
-<?php namespace App\Controllers;
+<?php namespace Frontend;
 
 use \CodeIgniter\Exceptions\PageNotFoundException;
+
+use App\Controllers\BaseController;
 
 class Pages extends BaseController {
     public function index() {
@@ -13,9 +15,7 @@ class Pages extends BaseController {
         }
 
         $data['title'] = ucfirst($page); // Capitalize the first letter
-
-        echo view('templates/header', $data);
-        echo view('pages/'.$page, $data);
-        echo view('templates/footer', $data);
+        $data['content'] = view('pages/'.$page, $data);
+        echo view('templates/layout', $data);
     }
 }

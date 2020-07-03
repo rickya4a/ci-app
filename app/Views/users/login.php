@@ -15,7 +15,18 @@
       </div>
       <div class="modal-body">
         <?php echo form_open('users/auth') ?>
-          <?= \Config\Services::validation()->listErrors(); ?>
+
+          <?php $errors = session()->getFlashdata('errors_login');
+          if (!empty($errors)): ?> <!-- error handler -->
+            <div class="alert alert-danger" role="alert">
+              <ul class="fa-ul">
+                <?php foreach ($errors as $error) : ?>
+                    <li><i class="fa-li fa fa-times"></i> <?= esc($error) ?></li>
+                <?php endforeach ?>
+              </ul>
+            </div>
+          <?php endif ?> <!-- error handler -->
+
           <?= csrf_field() ?>
           <div class="form-group">
             <input
@@ -43,7 +54,10 @@
       </div>
       <div class="modal-footer">
         <a href="<?php echo base_url('users/register') ?>"
-        >Belum Punya Akun ? Daftar</a>
+        >Belum Punya Akun? Daftar</a>
+        <br />
+        <a href="<?php echo base_url('users/reset-password') ?>"
+        >Lupa Password? Reset Password</a>
       </div>
     </div>
   </div>

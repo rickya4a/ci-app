@@ -1,12 +1,7 @@
 <?php if (session('success')): ?>
   <p class="success alert alert-success">
     <i class="fa fa-check"></i>
-    Anda berhasil melakukan registrasi
-  </p>
-<?php elseif(session('error')): ?>
-  <p class="error alert alert-danger">
-    <i class="fa fa-times"></i>
-    <?php echo session('error') ?>
+    <?php echo session()->getFlashdata('success'); ?>
   </p>
 <?php endif ?>
 

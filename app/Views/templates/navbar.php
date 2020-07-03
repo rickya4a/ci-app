@@ -92,14 +92,14 @@
             <li>
               <a
                 href="<?php echo base_url('users/logout')?>"
-              >Log Out(<?php echo $session->username ?>)</a>
+              >Log Out (<?php echo $session->username ?>)</a>
             </li>
           <?php else: ?>
             <li>
               <a
                 href="#loginModal"
                 data-toggle="modal"
-              >Booking Pemeriksaan</a>
+              >Login</a>
             </li>
           <?php endif ?>
       </div>

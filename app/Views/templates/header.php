@@ -8,7 +8,7 @@
     <meta name="keywords" content="Pixel">
     <meta name="author" content="rkwebdesigns">
     <!-- Site Title -->
-    <title>Klinik</title>
+    <title><?= esc($title) ?></title>
     <!-- Fav Icons -->
     <link
       rel="icon"

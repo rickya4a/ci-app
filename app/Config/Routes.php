@@ -34,19 +34,36 @@ $routes->setAutoRoute(true);
 $routes->get('/', '\Frontend\Home::index');
 $routes->post('users/auth', '\Frontend\Users::auth');
 $routes->get('users/logout', '\Frontend\Users::logout');
-$routes->match(['get', 'post'], 'users/register', '\Frontend\Users::register');
+
+$routes->match(
+    ['get', 'post'],
+    'users/register',
+    '\Frontend\Users::register'
+);
+
+$routes->match(
+    ['get', 'post'],
+    'users/reset-password',
+    '\Frontend\Users::reset_password'
+);
+$routes->post(
+    'users/confirmation-reset',
+    '\Frontend\Users::confirm_reset_password'
+);
+
 
 $routes->get('backend/login', 'Backend::login');
 $routes->post('backend/auth', 'Backend::auth');
 $routes->get('backend/logout', 'Backend::logout');
 $routes->group('backend', ['filter' => 'backend_auth'], function($routes) {
-    $routes->match(['get', 'post'], 'news/create', 'News::create');
+    $routes->match(
+        ['get', 'post'],
+        'news/create',
+        'News::create'
+    );
 });
 
-$routes->get('news/(:segment)', 'News::view/$1');
-$routes->get('news', 'News::index');
-$routes->match(['get', 'post'], 'backend/register', 'Backend::register');
-$routes->get('(:any)', 'Pages::view/$1');
+$routes->get('(:any)', '\Frontend\Pages::view/$1');
 
 /**
  * --------------------------------------------------------------------

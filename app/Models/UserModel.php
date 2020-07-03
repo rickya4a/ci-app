@@ -32,7 +32,7 @@ class UserModel extends Model {
      * 1 => password
      * @return boolean
      */
-    public function getUser($params) {
+    public function getUserCredential($params) {
 
         $this->builder->select('username, password');
         $this->builder->where('username', $params[0]);
@@ -45,6 +45,36 @@ class UserModel extends Model {
             if ($verify_pwd) {
                 return TRUE;
             }
+        }
+
+        return FALSE;
+    }
+
+    public function getUser($username) {
+
+        $this->builder->select('username');
+        $this->builder->where('username', $username);
+        $query = $this->builder->get()->getRow();
+
+        if (!$query) {
+            return FALSE;
+        }
+
+        return $query;
+    }
+
+    public function resetPassword($params) {
+        $data = [
+            'username' => $params[0],
+            'password' => password_hash(
+                $params[1],
+                PASSWORD_BCRYPT
+            ),
+        ];
+        $query = $this->builder->update($data);
+
+        if ($query) {
+            return TRUE;
         }
 
         return FALSE;

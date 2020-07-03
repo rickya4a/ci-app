@@ -1,4 +1,14 @@
-<?= \Config\Services::validation()->listErrors(); ?>
+<?php $errors = session()->getFlashdata('errors');
+if (!empty($errors)): ?> <!-- error handler -->
+  <div class="alert alert-danger" role="alert">
+    <ul class="fa-ul">
+      <?php foreach ($errors as $error) : ?>
+          <li><i class="fa-li fa fa-times"></i> <?= esc($error) ?></li>
+      <?php endforeach ?>
+    </ul>
+  </div>
+<?php endif ?> <!-- error handler -->
+
 <section id="section16" class="section16">
   <div class="container">
     <div class="row">
@@ -6,14 +16,6 @@
         <?php echo form_open('users/register') ?>
           <?= csrf_field() ?>
           <div class="col-md-6 col-lg-6">
-
-            <?php if (session('error')): ?>
-            <!-- unsuccessfully -->
-            <p class="error alert alert-danger">
-              <i class="fa fa-times"></i>
-              Gagal menyimpan data.
-            </p>
-            <?php endif ?>
 
             <div class="control-group form-group">
               <div class="controls">

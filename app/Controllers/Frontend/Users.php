@@ -6,13 +6,18 @@ use App\Controllers\BaseController;
 
 class Users extends BaseController {
 
+    /**
+     * User authentication
+     *
+     * @return void
+     */
     public function auth() {
         $user_model = new UserModel();
 
         $username = $this->request->getVar('username');
         $password = $this->request->getVar('password');
 
-        $validate = $this->validation->setRules([
+        $this->validation->setRules([
             'username' => [
                 'label' => 'Username',
                 'rules' => 'required',
@@ -25,110 +30,202 @@ class Users extends BaseController {
                 'rules' => 'required|min_length[6]',
                 'errors' => [
                     'required' => 'Password tidak boleh kosong',
-                    'min_length[6]' => 'Password kurang dari 6 karakter'
+                    'min_length' => 'Password kurang dari 6 karakter'
                 ]
             ]
         ]);
 
         if (!$this->validation->withRequest($this->request)->run()) {
-            $errors = $this->validation->getErrors();
-            return redirect()->back()->withInput();
+            return redirect()
+                    ->back()
+                    ->with('errors_login', $this->validation->getErrors());
         } else {
-
             $args = array($username, $password);
-            $get_auth = $user_model->getUser($args);
+            $get_auth = $user_model->getUserCredential($args);
 
             if ($get_auth === TRUE) {
                 $sess_data = [
                     'username' => $username,
                     'isLoggedIn' => TRUE,
-                    'isAdmin' => TRUE
+                    'isAdmin' => FALSE
                 ];
-
                 $this->session->set($sess_data);
-
                 return redirect('/');
             } else {
                 return redirect()
                         ->back()
-                        ->with('error', 'Username atau password salah');
+                        ->with(
+                            'errors_login',
+                            array('Username atau password salah')
+                        );
             }
         }
     }
 
+    /**
+     * Create new user
+     *
+     * @return void
+     */
     public function register() {
         $user_model = new UserModel();
 
-        if (!$this->validate([
-            'nama_pasien' => 'required|alpha_space|max_length[50]',
-            'email' => 'required|valid_email',
-            'username' => $this->rules(array(
-                                    'required',
-                                    'alpha_numeric',
-                                    'min_length[3]',
-                                    'max_length[25]',
-                                    'is_unique[users.username]'
-                                )),
-            'password' => $this->rules(array(
-                                    'required',
-                                    'alpha_numeric',
-                                    'min_length[6]',
-                                    'max_length[255]'
-                                )),
-            'no_hp' => $this->rules(array(
-                                    'required',
-                                    'numeric',
-                                    'min_length[10]',
-                                    'max_length[15]'
-                                )),
-            'jenis_kelamin' => 'required',
-            'tanggal_lahir' => 'required',
-            'tempat_lahir' => 'required',
-            'alamat' => 'required|alpha_numeric_punct|max_length[255]',
-            'no_ktp' => 'required|alpha_numeric|exact_length[16]'
-        ])) {
-            $data = [
-                'title' => 'Register'
-            ];
+        if (empty($this->request->getPost())) {
+            $data['title'] = 'User Registration';
             $data['content'] = view('users/register', $data);
-            echo view('templates/layout', $data);
+            return view('templates/layout', $data);
         } else {
-            $save = $user_model->save([
-                'name' => $this->request->getVar('nama_pasien'),
-                'email' => $this->request->getVar('email'),
-                'username' => $this->request->getVar('username'),
-                'password' => password_hash(
-                    $this->request->getVar('password'),
-                    PASSWORD_BCRYPT
-                ),
-                'phone' => $this->request->getVar('no_hp'),
-                'sex' => $this->request->getVar('jenis_kelamin'),
-                'date_of_birth' => $this->request->getVar('tanggal_lahir'),
-                'place_of_birth' => $this->request->getVar('tempat_lahir'),
-                'address' => $this->request->getVar('alamat'),
-                'id_no' => $this->request->getVar('no_ktp')
-            ]);
-
-            if ($save === TRUE) {
+            if ($this->validation->run(
+                $this->request->getPost(),
+                'register') === FALSE) {
                 $this->session->setFlashdata(
-                    'success',
-                    'User has been added successfully'
+                    'errors',
+                    $this->validation->getErrors()
                 );
-
-                $data['success'] = $this->session->get('success');
-                return redirect()->to(\site_url('/'));
+                return redirect()->to('register');
             } else {
-                $this->session->setFlashdata(
-                    'error',
-                    'Failed to insert data'
-                );
-
-                $data['error'] = $this->session->get('error');
-                return redirect()->back()->with('error', 'Failed to insert data');
+                // Save user data
+                $save = $user_model->save([
+                    'name' => $this->request->getVar('nama_pasien'),
+                    'email' => $this->request->getVar('email'),
+                    'username' => $this->request->getVar('username'),
+                    'password' => password_hash(
+                        $this->request->getVar('password'),
+                        PASSWORD_BCRYPT
+                    ),
+                    'phone' => $this->request->getVar('no_hp'),
+                    'sex' => $this->request->getVar('jenis_kelamin'),
+                    'date_of_birth' => $this->request->getVar('tanggal_lahir'),
+                    'place_of_birth' => $this->request->getVar('tempat_lahir'),
+                    'address' => $this->request->getVar('alamat'),
+                    'id_no' => $this->request->getVar('no_ktp')
+                ]);
+                if ($save === TRUE) {
+                    $this->session->setFlashdata(
+                        'success',
+                        'Berhasil registrasi'
+                    );
+                    return redirect()->to(\site_url('/'));
+                } else {
+                    return redirect()
+                            ->back()
+                            ->with(
+                                'errors',
+                                array('Failed to insert data')
+                            );
+                }
             }
         }
     }
 
+    /**
+     * Reset user password
+     *
+     * @return void
+     */
+    public function reset_password() {
+        $user_model = new UserModel();
+
+        $username = $this->request->getPost('username');
+
+        if (empty($username)) {
+            $data['title'] = 'Reset Password';
+            $data['content'] = view('users/reset_password', $data);
+            return view('templates/layout', $data);
+        } else {
+            $this->validation->setRules([
+                'username' => 'required'
+            ]);
+            if ($this->validation->withRequest($this->request)->run()) {
+                $data['user'] = $user_model->getUser($username);
+                if ($data['user']) {
+                    $data['title'] = 'Reset Password';
+                    $data['content'] = view('users/confirmation_reset', $data);
+                    return view('templates/layout', $data);
+                } else {
+                    return redirect()
+                            ->back()
+                            ->with('errors', array('User tidak ditemukan'));
+                }
+            } else {
+                return redirect()
+                            ->back()
+                            ->with('errors', $this->validation->getErrors());
+            }
+        }
+    }
+
+    /**
+     * Reset password confirmation
+     *
+     * @return void
+     */
+    public function confirm_reset_password() {
+        $user_model = new UserModel();
+
+        $username = $this->request->getVar('username');
+        $password = $this->request->getVar('password');
+        $confirm_password = $this->request->getVar('confirm_password');
+
+        $this->validation->setRules([
+            'username' => [
+                'label' => 'Username',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Username tidak boleh kosong'
+                ]
+            ],
+            'password' => [
+                'label' => 'Password',
+                'rules' => 'required|min_length[6]',
+                'errors' => [
+                    'required' => 'Password tidak boleh kosong',
+                    'min_length' => 'Password kurang dari 6 karakter'
+                ]
+            ],
+            'confirm_password' => [
+                'label' => 'Confirmation',
+                'rules' => 'required|matches[password]',
+                'errors' => [
+                    'required' => 'Konfirmasi password tidak boleh kosong',
+                    'matches' => 'Password tidak sama',
+                ]
+            ],
+        ]);
+
+        if (!$this->validation->withRequest($this->request)->run()) {
+            $this->session->setFlashdata(
+                'errors',
+                $this->validation->getErrors()
+            );
+            return redirect()->back()->withInput();
+        } else {
+            $args = array($username, $password);
+            $save_user = $user_model->resetPassword($args);
+
+            if ($save_user === TRUE) {
+                $this->session->setFlashdata(
+                    'success',
+                    'Password berhasil direset'
+                );
+
+                return redirect()->to(\site_url('/'));
+            } else {
+                return redirect()
+                        ->back()
+                        ->with(
+                            'errors',
+                            array('Terjadi kesalahan, silakan coba kembali')
+                        );
+            }
+        }
+    }
+
+    /**
+     * Logout user session
+     *
+     * @return void
+     */
     public function logout() {
         $this->session->destroy();
         return redirect()->to('/');
