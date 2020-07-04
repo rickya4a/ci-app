@@ -8,46 +8,48 @@ class Users extends Migration
         $this->forge->addField([
             'id' => [
                 'type'           => 'INT',
+                'constraint'     => 11,
                 'unsigned'       => TRUE,
                 'auto_increment' => TRUE
             ],
             'name' => [
                 'type'           => 'VARCHAR',
-                'constraint'     => '50',
+                'constraint'     => 50,
             ],
             'email' => [
                 'type'           => 'VARCHAR',
-                'constraint'     => '50',
+                'constraint'     => 50,
             ],
             'username' => [
                 'type'           => 'VARCHAR',
-                'constraint'     => '25',
+                'constraint'     => 25,
             ],
             'password' => [
                 'type'           => 'VARCHAR',
-                'constraint'     => '255',
+                'constraint'     => 255,
             ],
             'phone' => [
                 'type'           => 'VARCHAR',
-                'constraint'     => '20',
+                'constraint'     => 20,
             ],
             'sex' => [
                 'type'           => 'VARCHAR',
-                'constraint'     => '10',
+                'constraint'     => 10,
             ],
             'date_of_birth' => [
                 'type'           => 'DATE'
             ],
             'place_of_birth' => [
-                'type'           => '20',
-                'constraint'     => '20',
+                'type'           => 'VARCHAR',
+                'constraint'     => 20,
             ],
             'address' => [
-                'type'           => 'TEXT'
+                'type'           => 'TEXT',
+                'null'           => TRUE
             ],
             'id_no' => [
                 'type'           => 'VARCHAR',
-                'constraint'     => '20',
+                'constraint'     => 20,
             ],
         ]);
         $this->forge->addKey('id', TRUE);
