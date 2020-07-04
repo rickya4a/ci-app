@@ -58,8 +58,9 @@
           ?>">
             <a href="<?php echo base_url('/') ?>">Home</a>
           </li>
-          <li><a href="aboutus.html">Profil</a></li>
-          <li><a href="services.html">Konten </a></li>
+          <li class="<?php if (uri_string() === 'about')
+            echo 'active'?>"><a href="<?php echo base_url('about') ?>">Profil</a></li>
+          <!-- <li><a href="services.html">Konten </a></li>
           <li class="dropdown">
             <a
               href="#"
@@ -87,7 +88,7 @@
             </ul>
           </li>
           <li><a href="contact.html">Dokter Umum/MCU</a></li>
-          <li><a href="contact.html">Tentang Kami</a></li>
+          <li><a href="contact.html">Tentang Kami</a></li> -->
           <?php if (!empty($session->username)): ?>
             <li>
               <a
