@@ -1,7 +1,6 @@
 ## Installation & updates
 
-`composer create-project codeigniter4/appstarter` then `composer update` whenever
-there is a new release of the framework.
+Install all dependencies using `composer install`.
 
 Before running application, create database `ci-app` using MySQL and run `php spark migrate`
 
