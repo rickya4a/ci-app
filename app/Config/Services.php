@@ -2,7 +2,8 @@
 
 use CodeIgniter\Config\Services as CoreServices;
 
-use Config\AuthService;
+use Config\Services\AuthService;
+use Config\Services\PageService;
 
 require_once SYSTEMPATH . 'Config/Services.php';
 
@@ -38,5 +39,14 @@ class Services extends CoreServices
         }
         $auth = new AuthService();
         return $auth;
+    }
+
+    public static function page($getShared = true)
+    {
+        if ($getShared) {
+            return static::getSharedInstance('page');
+        }
+        $page = new PageService();
+        return $page;
     }
 }

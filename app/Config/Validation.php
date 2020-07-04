@@ -28,6 +28,7 @@ class Validation
 	public $templates = [
 		'list'   => 'CodeIgniter\Validation\Views\list',
         'single' => 'CodeIgniter\Validation\Views\single',
+        'err_list' => 'errors/_errors_list'
 	];
 
 	//--------------------------------------------------------------------
@@ -82,6 +83,41 @@ class Validation
             'required' => 'Apakah Anda dibawah usia 17 tahun?',
             'numeric' => 'Tolong masukkan nomor, bukan huruf',
             'exact_length' => 'Indonesia memiliki standar nomor KTP sepanjang 16 digit'
+        ]
+    ];
+
+    public $auth = [
+        'username' => 'required',
+        'password' => 'required|min_length[6]',
+    ];
+
+    public $auth_errors = [
+        'username' => [
+            'required' => 'Username tidak boleh kosong'
+        ],
+        'password' => [
+            'required' => 'Password tidak boleh kosong',
+            'min_length' => 'Password kurang dari 6 karakter'
+        ]
+    ];
+
+    public $reset_password = [
+        'username' => 'required',
+        'password' => 'required|min_length[6]',
+        'confirm_password' => 'required|matches[password]'
+    ];
+
+    public $reset_password_errors = [
+        'username' => [
+            'required' => 'Username tidak boleh kosong'
+        ],
+        'password' => [
+            'required' => 'Password tidak boleh kosong',
+            'min_length' => 'Password harus lebih dari 6 karakter'
+        ],
+        'confirm_password' => [
+            'required' => 'Konfirmasi password tidak boleh kosong',
+            'matches' => 'Password tidak sama',
         ]
     ];
 }

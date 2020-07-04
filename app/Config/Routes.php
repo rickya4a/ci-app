@@ -56,12 +56,12 @@ $routes->get('backend/login', 'Backend::login');
 $routes->post('backend/auth', 'Backend::auth');
 $routes->get('backend/logout', 'Backend::logout');
 $routes->group('backend', ['filter' => 'backend_auth'], function($routes) {
-    $routes->match(
-        ['get', 'post'],
-        'news/create',
-        'News::create'
-    );
 });
+$routes->match(
+    ['get', 'post'],
+    'news/create',
+    '\Frontend\News::create'
+);
 
 $routes->get('(:any)', '\Frontend\Pages::view/$1');
 

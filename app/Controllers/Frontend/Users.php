@@ -16,26 +16,9 @@ class Users extends BaseController {
 
         $username = $this->request->getVar('username');
         $password = $this->request->getVar('password');
+        $items = $this->request->getPost();
 
-        $this->validation->setRules([
-            'username' => [
-                'label' => 'Username',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Username tidak boleh kosong'
-                ]
-            ],
-            'password' => [
-                'label' => 'Password',
-                'rules' => 'required|min_length[6]',
-                'errors' => [
-                    'required' => 'Password tidak boleh kosong',
-                    'min_length' => 'Password kurang dari 6 karakter'
-                ]
-            ]
-        ]);
-
-        if (!$this->validation->withRequest($this->request)->run()) {
+        if (!$this->validation->run($items, 'auth')) {
             return redirect()
                     ->back()
                     ->with('errors_login', $this->validation->getErrors());
@@ -128,13 +111,18 @@ class Users extends BaseController {
 
         $username = $this->request->getPost('username');
 
-        if (empty($username)) {
+        if ($this->request->getMethod() !== 'post') {
             $data['title'] = 'Reset Password';
             $data['content'] = view('users/reset_password', $data);
             return view('templates/layout', $data);
         } else {
             $this->validation->setRules([
-                'username' => 'required'
+                'username' => [
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => 'Username tidak boleh kosong'
+                    ]
+                ],
             ]);
             if ($this->validation->withRequest($this->request)->run()) {
                 $data['user'] = $user_model->getUser($username);
@@ -166,34 +154,9 @@ class Users extends BaseController {
         $username = $this->request->getVar('username');
         $password = $this->request->getVar('password');
         $confirm_password = $this->request->getVar('confirm_password');
+        $items = $this->request->getPost();
 
-        $this->validation->setRules([
-            'username' => [
-                'label' => 'Username',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Username tidak boleh kosong'
-                ]
-            ],
-            'password' => [
-                'label' => 'Password',
-                'rules' => 'required|min_length[6]',
-                'errors' => [
-                    'required' => 'Password tidak boleh kosong',
-                    'min_length' => 'Password kurang dari 6 karakter'
-                ]
-            ],
-            'confirm_password' => [
-                'label' => 'Confirmation',
-                'rules' => 'required|matches[password]',
-                'errors' => [
-                    'required' => 'Konfirmasi password tidak boleh kosong',
-                    'matches' => 'Password tidak sama',
-                ]
-            ],
-        ]);
-
-        if (!$this->validation->withRequest($this->request)->run()) {
+        if (!$this->validation->run($items, 'reset_password')) {
             $this->session->setFlashdata(
                 'errors',
                 $this->validation->getErrors()

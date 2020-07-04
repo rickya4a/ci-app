@@ -1,4 +1,4 @@
-<?php namespace Config;
+<?php namespace Config\Services;
 
 class AuthService {
     function __construct() {

@@ -1,4 +1,7 @@
-<?php $session = \Config\Services::session() ?>
+<?php
+$page = service('page');
+$session = service('session');
+ ?>
 
 <!-- nav HTML -->
 <header>
@@ -53,13 +56,14 @@
           class="nav navbar-nav navbar-right-dropdown-menu multi-level"
           class="right"
         >
-          <li class="<?php if (uri_string() === '/')
-            echo 'active';
-          ?>">
-            <a href="<?php echo base_url('/') ?>">Home</a>
+          <li class="<?php $page->active('/')?>">
+            <a href="<?php echo base_url('/') ?>"
+            >Home</a>
           </li>
-          <li class="<?php if (uri_string() === 'about')
-            echo 'active'?>"><a href="<?php echo base_url('about') ?>">Profil</a></li>
+          <li class="<?php $page->active('about')?>">
+            <a href="<?php echo base_url('about') ?>"
+            >Profil</a>
+          </li>
           <!-- <li><a href="services.html">Konten </a></li>
           <li class="dropdown">
             <a

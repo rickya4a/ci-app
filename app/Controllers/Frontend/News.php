@@ -1,7 +1,8 @@
-<?php namespace App\Controllers;
+<?php namespace Frontend;
 
 use App\Models\NewsModel;
 use CodeIgniter\Exceptions\PageNotFoundException;
+use App\Controllers\BaseController;
 
 class News extends BaseController {
 
@@ -56,6 +57,7 @@ class News extends BaseController {
             'title' => 'required|min_length[3]|max_length[255]',
             'body'	=> 'required'
         ])) {
+            $data['title'] = 'news';
             $data['content'] = view('news/create');
             echo view('templates/layout', $data);
         } else {
