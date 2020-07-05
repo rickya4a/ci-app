@@ -16,16 +16,9 @@
       <div class="modal-body">
         <?php echo form_open('users/auth') ?>
 
-          <?php $errors = session()->getFlashdata('errors_login');
-          if (!empty($errors)): ?> <!-- error handler -->
-            <div class="alert alert-danger" role="alert">
-              <ul class="fa-ul">
-                <?php foreach ($errors as $error) : ?>
-                    <li><i class="fa-li fa fa-times"></i> <?= esc($error) ?></li>
-                <?php endforeach ?>
-              </ul>
-            </div>
-          <?php endif ?> <!-- error handler -->
+          <!-- Error handler -->
+          <?php echo view('errors/_errors_list'); ?>
+          <!-- Error handler -->
 
           <?= csrf_field() ?>
           <div class="form-group">

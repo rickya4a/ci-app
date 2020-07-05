@@ -1,3 +1,5 @@
+<?php $errors = session()->getFlashdata('errors');
+if (!empty($errors)): ?> <!-- error handler -->
 <div class="alert alert-danger" role="alert">
   <ul class="fa-ul">
     <?php foreach ($errors as $error) : ?>
@@ -5,3 +7,4 @@
     <?php endforeach ?>
   </ul>
 </div>
+<?php endif ?>
