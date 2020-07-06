@@ -1,5 +1,4 @@
 /.env
-/.git
 /vendor
 .gitkeep
 /writable/session/ci_session*

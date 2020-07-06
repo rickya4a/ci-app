@@ -1,9 +1,9 @@
-<?php echo view('templates/header') ?>
+<?= $this->include('templates/header') ?>
 
-<?php echo view('templates/navbar') ?>
+<?= $this->include('templates/navbar') ?>
 
 <div class="container">
   <?php echo $content ?>
 </div>
 
-<?php echo view('templates/footer') ?>
+<?= $this->include('templates/footer') ?>
