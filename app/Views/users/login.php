@@ -17,7 +17,11 @@
         <?php echo form_open('users/auth') ?>
 
           <!-- Error handler -->
-          <?php echo view('errors/_errors_list'); ?>
+          <?php
+          if (!empty(session('errors_login'))) {
+            echo view('errors/_errors_login');
+          }
+          ?>
           <!-- Error handler -->
 
           <?= csrf_field() ?>

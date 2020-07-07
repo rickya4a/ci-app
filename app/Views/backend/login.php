@@ -1,7 +1,13 @@
-<?= \Config\Services::validation()->listErrors(); ?>
-<?php echo '<pre>';
-print_r($_SESSION);
-echo '</pre>'; ?>
+<?php if (session('success')): ?>
+  <p class="success alert alert-success">
+    <i class="fa fa-check"></i>
+    <?php echo session()->getFlashdata('success'); ?>
+  </p>
+<?php endif ?>
+
+<!-- Error handler -->
+<?php echo view('errors/_errors_list'); ?>
+<!-- Error handler -->
 
 <?php echo form_open('backend/auth', 'id="myform"') ?>
   <?= csrf_field() ?>

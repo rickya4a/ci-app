@@ -120,4 +120,11 @@ class Validation
             'matches' => 'Password tidak sama',
         ]
     ];
+
+    public $admin_register = [
+        'name' => 'required|alpha_space',
+        'username' => 'required|alpha_numeric|min_length[5]|max_length[25]|is_unique[admin.username]',
+        'password' => 'required|alpha_numeric|min_length[8]|max_length[50]',
+        'confirm_password' => 'required|matches[password]'
+    ];
 }
