@@ -6,6 +6,17 @@ use App\Controllers\BaseController;
 class Admin extends BaseController {
 
     /**
+     * Admin dashboard
+     *
+     * @return void
+     */
+    public function index() {
+        $data['title'] = 'Admin Dashboard';
+        $data['content'] = view('backend/dashboard');
+        echo view($this->backend, $data);
+    }
+
+    /**
      * Show login form
      *
      * @return void
@@ -13,7 +24,7 @@ class Admin extends BaseController {
     public function login() {
         $data['content'] = view('backend/login');
         $data['title'] = 'Admin Login';
-        echo view('templates/layout', $data);
+        echo view($this->backend, $data);
     }
 
     /**
@@ -36,16 +47,17 @@ class Admin extends BaseController {
             $args = array($username, $password);
             $get_auth = $admin_model->getAdminCredential($args);
 
-            if ($get_auth === TRUE) {
+            if (!empty($get_auth)) {
                 $sess_data = [
                     'username' => $username,
+                    'name' => $get_auth[0]->name,
                     'isLoggedIn' => TRUE,
                     'isAdmin' => TRUE
                 ];
 
                 $this->session->set($sess_data);
 
-                return redirect('/');
+                return redirect('backend/dashboard');
             } else {
                 return redirect()
                         ->back()

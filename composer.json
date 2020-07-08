@@ -1,7 +1,14 @@
 {
-    "name": "codeigniter4/appstarter",
+    "name": "Medicamp",
     "type": "project",
-    "description": "CodeIgniter4 starter app",
+    "description": "Medicamp Clinic",
+    "authors": [
+      {
+        "name": "Ricky Aditya",
+        "email": "aditya_ricky@outlook.com",
+        "role": "Developer/Maintainer"
+      }
+    ],
     "homepage": "https://codeigniter.com",
     "license": "MIT",
     "require": {

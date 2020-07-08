@@ -57,6 +57,7 @@ $routes->post('backend/auth', '\Backend\Admin::auth');
 $routes->get('backend/logout', '\Backend\Admin::logout');
 $routes->match(['get', 'post'],'backend/register', '\Backend\Admin::register');
 $routes->group('backend', ['filter' => 'backend_auth'], function($routes) {
+    $routes->get('dashboard', '\Backend\Admin::index');
 });
 
 

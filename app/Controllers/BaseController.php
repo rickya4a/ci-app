@@ -48,6 +48,9 @@ class BaseController extends Controller {
         $config->key    = 'qwertyuiopasdfghjklzxcvbnm1234567890';
         $config->driver = 'OpenSSL';
         $this->encrypter = \Config\Services::encrypter($config);
+
+        // Backend dir
+        $this->backend = 'backend/templates/layout';
     }
 
     public function rules($array) {

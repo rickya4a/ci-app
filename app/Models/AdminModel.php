@@ -26,7 +26,7 @@ class AdminModel extends Model {
      */
     public function getAdminCredential($params) {
 
-        $this->builder->select('username, password');
+        $this->builder->select('username, name, password');
         $this->builder->where('username', $params[0]);
         $query = $this->builder->get()->getResultObject();
 
@@ -35,7 +35,7 @@ class AdminModel extends Model {
         } else {
             $verify_pwd = password_verify($params[1], $query[0]->password);
             if ($verify_pwd) {
-                return TRUE;
+                return $query;
             }
         }
 
