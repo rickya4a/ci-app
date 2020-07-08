@@ -146,3 +146,15 @@
     </div>
   </div>
 </section>
+<section id="section9" class="section-margine section-9-background">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-2 col-sm-4 col-xs-6"><img src="assets/images/clients/1.png" class="img-responsive wow fadeInUp" alt=""></div>
+      <div class="col-md-2 col-sm-4 col-xs-6"><img src="assets/images/clients/2.png" class="img-responsive wow fadeInUp" alt=""></div>
+      <div class="col-md-2 col-sm-4 col-xs-6"><img src="assets/images/clients/3.png" class="img-responsive wow fadeInUp" alt=""></div>
+      <div class="col-md-2 col-sm-4 col-xs-6"><img src="assets/images/clients/4.png" class="img-responsive wow fadeInUp" alt=""></div>
+      <div class="col-md-2 col-sm-4 col-xs-6"><img src="assets/images/clients/5.png" class="img-responsive wow fadeInUp" alt=""></div>
+      <div class="col-md-2 col-sm-4 col-xs-6"><img src="assets/images/clients/6.png" class="img-responsive wow fadeInUp" alt=""></div>
+    </div>
+  </div>
+</section>
