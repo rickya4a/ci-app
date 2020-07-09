@@ -161,8 +161,8 @@
         </header>
       </div>
     </div>
-    <div class="row">
 
+    <div class="row">
       <div class="col-md-4 col-lg-4">
         <div class="section-14-box wow fadeInUp">
           <img src="<?php echo base_url('assets/images/blog/blog-1.jpg') ?>" class="img-responsive" alt="Blog image 1">
@@ -175,7 +175,9 @@
               </div>
             </div>
           </div>
-          <p align = "justify">tess
+          <p align = "justify">Liputan6.com, Jakarta Manfaat makan apel dengan kulitnya ternyata 
+          sangat baik untuk kesehatan. Padahal tidak sedikit juga orang yang memilih makan apel 
+          dengan dikupas terlebih dahulu. Padahal makan apel dengan mengupas kulitnya ini dapa..
          </p>
         </div>
       </div>

@@ -12,7 +12,7 @@
 
 <div class="login-box">
   <div class="login-logo">
-    <a href="#"><b>Admin</b>Medicamp</a>
+    <a href="#"><b>Admin</b>JMH</a>
   </div>
   <!-- /.login-logo -->
   <div class="card">
