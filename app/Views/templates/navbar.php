@@ -106,7 +106,9 @@ $session = service('session');
               aria-expanded="false"
             >Booking<span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><a href="#">Booking Pemeriksaan</a></li>
+              <li class="<?php $page->active('examination')?>">
+              <a href="<?php echo base_url('examination')?>">
+              Booking Pemeriksaan</a></li>
               <li><a href="#">Booking Konsultasi</a></li>
               <li class="divider"></li>
             </ul>
