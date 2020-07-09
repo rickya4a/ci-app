@@ -50,6 +50,11 @@ $routes->post(
     'users/confirmation-reset',
     '\Frontend\Users::confirm_reset_password'
 );
+// $router->match(
+//     ['get','post'],
+//     'pemeriksaan/view',
+//     '\Frontend\Pemeriksaan::view'
+// );
 
 
 $routes->get('backend/login', '\Backend\Admin::login');
