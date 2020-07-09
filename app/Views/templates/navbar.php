@@ -95,7 +95,9 @@ $session = service('session');
           </li>
           <li><a href="contact.html">Dokter Umum/MCU</a></li>
           <li><a href="contact.html">Tentang Kami</a></li>
-          <li class="dropdown">
+          </li>
+          <?php if (!empty($session->username)): ?>
+            <li class="dropdown">
             <a
               href="#"
               class="dropdown-toggle"
@@ -108,8 +110,6 @@ $session = service('session');
               <li><a href="#">Booking Konsultasi</a></li>
               <li class="divider"></li>
             </ul>
-          </li>
-          <?php if (!empty($session->username)): ?>
             <li>
               <a
                 href="<?php echo base_url('users/logout')?>"
