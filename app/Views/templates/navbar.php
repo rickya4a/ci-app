@@ -64,7 +64,7 @@ $session = service('session');
             <a href="<?php echo base_url('about') ?>"
             >Profil</a>
           </li>
-          <!-- <li><a href="services.html">Konten </a></li>
+          <li><a href="services.html">Konten </a></li>
           <li class="dropdown">
             <a
               href="#"
@@ -74,10 +74,12 @@ $session = service('session');
               aria-expanded="false"
             >Produk<span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><a href="#">USG</a></li>
+              <li><a href="#">Pemeriksaan & Pengobatan</a></li>
               <li><a href="#">Vaksin (Vendor)</a></li>
               <li><a href="#">Fisioterapi</a></li>
-              <li><a href="#">Gigi</a></li>
+              <li><a href="#">Konsultasi Gizi</a></li>
+              <li><a href="#">Konsultasi Psikologi Mengenai ABK</a></li>
+              <li><a href="#">Asesmen Perkembangan & Psikotes</a></li>
               <li class="divider"></li>
               <li class="dropdown-submenu">
                 <a tabindex="-1" href="#">Kulit (Perawatan Wanita)</a>
@@ -92,7 +94,21 @@ $session = service('session');
             </ul>
           </li>
           <li><a href="contact.html">Dokter Umum/MCU</a></li>
-          <li><a href="contact.html">Tentang Kami</a></li> -->
+          <li><a href="contact.html">Tentang Kami</a></li>
+          <li class="dropdown">
+            <a
+              href="#"
+              class="dropdown-toggle"
+              data-toggle="dropdown"
+              role="button"
+              aria-expanded="false"
+            >Booking<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Booking Pemeriksaan</a></li>
+              <li><a href="#">Booking Konsultasi</a></li>
+              <li class="divider"></li>
+            </ul>
+          </li>
           <?php if (!empty($session->username)): ?>
             <li>
               <a
