@@ -146,6 +146,43 @@
     </div>
   </div>
 </section>
+<section id="section14" class="section-margine">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-lg-12">
+        <header class="title-head">
+          <h2>Tips dan Berita</h2>
+          <!-- <p>Using many font styles canslow down your webpage, so only select the font styles that you</p> -->
+          <div class="line-heading">
+            <span class="line-left"></span>
+            <span class="line-middle">+</span>
+            <span class="line-right"></span>
+          </div>
+        </header>
+      </div>
+    </div>
+    <div class="row">
+
+      <div class="col-md-4 col-lg-4">
+        <div class="section-14-box wow fadeInUp">
+          <img src="<?php echo base_url('assets/images/blog/blog-1.jpg') ?>" class="img-responsive" alt="Blog image 1">
+          <h3 align = "justify"><a href="berita.php">Judul Berita</a></h3>
+          <div class="row">
+            <div class="col-md-12 col-lg-12">
+              <div class="comments">
+                <a class="btn btn-primary btn-sm"> 09-07-2020</a>
+                <a href="berita.php" class="btn btn-primary btn-sm">Lihat</a>
+              </div>
+            </div>
+          </div>
+          <p align = "justify">tess
+         </p>
+        </div>
+      </div>
+            
+    </div>
+  </div>
+</section>
 <section id="section9" class="section-margine section-9-background">
   <div class="container">
     <div class="row">
