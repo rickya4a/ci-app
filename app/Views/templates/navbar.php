@@ -109,7 +109,9 @@ $session = service('session');
               <li class="<?php $page->active('examination')?>">
               <a href="<?php echo base_url('examination')?>">
               Booking Pemeriksaan</a></li>
-              <li><a href="#">Booking Konsultasi</a></li>
+              <li class="<?php $page->active('consultation')?>">
+              <a href="<?php echo base_url('consultation')?>">
+              Booking Konsultasi</a></li>
               <li class="divider"></li>
             </ul>
             <li>
