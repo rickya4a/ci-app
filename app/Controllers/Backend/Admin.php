@@ -80,7 +80,7 @@ class Admin extends BaseController {
         if (empty($this->request->getPost())) {
             $data['title'] = 'Create Admin';
             $data['content'] = view('backend/register', $data);
-            return view('templates/layout', $data);
+            return view($this->backend, $data);
         } else {
             if ($this->validation->run(
                 $this->request->getPost(),

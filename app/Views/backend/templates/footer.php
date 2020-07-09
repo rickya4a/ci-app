@@ -1,4 +1,5 @@
-    <?php if (uri_string() !== 'backend/login') { ?>
+    <?php if (uri_string() !== 'backend/login'
+              && uri_string() !== 'backend/register') { ?>
       <footer class="main-footer">
         <strong>Copyright &copy; 2014-2019 <a href="#">Medicamp</a>.</strong>
         All rights reserved.

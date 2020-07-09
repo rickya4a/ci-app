@@ -10,10 +10,22 @@ class PageService {
     }
 
     public function admin_body() {
-        if (uri_string() === 'backend/login') {
+        $uri = \uri_string();
+        switch ($uri) {
+            case 'backend/login':
+                echo 'hold-transition login-page';
+                break;
+            case 'backend/register':
+                echo 'hold-transition register-page';
+                break;
+            default:
+                echo 'hold-transition sidebar-mini layout-fixed';
+                break;
+        }
+        /* if (uri_string() === 'backend/login') {
             echo 'hold-transition login-page';
         } else {
             echo 'hold-transition sidebar-mini layout-fixed';
-        }
+        } */
     }
 }
