@@ -1,7 +1,7 @@
     <?php if (uri_string() !== 'backend/login'
               && uri_string() !== 'backend/register') { ?>
       <footer class="main-footer">
-        <strong>Copyright &copy; 2014-2019 <a href="#">Medicamp</a>.</strong>
+        <strong>Copyright &copy; 2014-2019 <a href="#">JMH</a>.</strong>
         All rights reserved.
         <div class="float-right d-none d-sm-inline-block">
           <b>Version</b> 3.0.5

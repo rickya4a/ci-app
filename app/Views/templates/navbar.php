@@ -64,7 +64,7 @@ $session = service('session');
             <a href="<?php echo base_url('about') ?>"
             >Profil</a>
           </li>
-          <!-- <li><a href="services.html">Konten </a></li>
+          <li><a href="services.html">Konten </a></li>
           <li class="dropdown">
             <a
               href="#"
@@ -74,10 +74,12 @@ $session = service('session');
               aria-expanded="false"
             >Produk<span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><a href="#">USG</a></li>
+              <li><a href="#">Pemeriksaan & Pengobatan</a></li>
               <li><a href="#">Vaksin (Vendor)</a></li>
               <li><a href="#">Fisioterapi</a></li>
-              <li><a href="#">Gigi</a></li>
+              <li><a href="#">Konsultasi Gizi</a></li>
+              <li><a href="#">Konsultasi Psikologi Mengenai ABK</a></li>
+              <li><a href="#">Asesmen Perkembangan & Psikotes</a></li>
               <li class="divider"></li>
               <li class="dropdown-submenu">
                 <a tabindex="-1" href="#">Kulit (Perawatan Wanita)</a>
@@ -92,8 +94,26 @@ $session = service('session');
             </ul>
           </li>
           <li><a href="contact.html">Dokter Umum/MCU</a></li>
-          <li><a href="contact.html">Tentang Kami</a></li> -->
+          <li><a href="contact.html">Tentang Kami</a></li>
+          </li>
           <?php if (!empty($session->username)): ?>
+            <li class="dropdown">
+            <a
+              href="#"
+              class="dropdown-toggle"
+              data-toggle="dropdown"
+              role="button"
+              aria-expanded="false"
+            >Booking<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li class="<?php $page->active('pemeriksaan')?>">
+              <a href="<?php echo base_url('pemeriksaan')?>">
+              Booking Pemeriksaan</a></li>
+              <li class="<?php $page->active('konsultasi')?>">
+              <a href="<?php echo base_url('konsultasi')?>">
+              Booking Konsultasi</a></li>
+              <li class="divider"></li>
+            </ul>
             <li>
               <a
                 href="<?php echo base_url('users/logout')?>"

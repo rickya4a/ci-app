@@ -7,7 +7,7 @@
       'alt'   => 'Medicamp',
       'class' => 'brand-image elevation-3',
       'style' => 'opacity: .8']) ?>
-    <span class="brand-text font-weight-light">Admin Medicamp</span>
+    <span class="brand-text font-weight-light">Admin JMH</span>
   </a>
 
   <!-- Sidebar -->
