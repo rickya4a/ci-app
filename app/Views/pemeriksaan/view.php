@@ -16,21 +16,26 @@
     </div>
   </div>
 </section>
+
 <section id="section16" class="section16">
   <div class="container">
     <div class="col-lg-12">
+          <a href="#"onclick="return confirm('Yakin hapus data?')">
+              <button class="btn btn-primary btn-sm"> <i class="fa fa-plus"></i> Tambah </button>
+          </a>
+            <p></p>
+     <br>
       <table class="table table-bordered">
-     
-     
         <thead>
           <tr>
        
             <th>No</th>
             <th>Nama Pasien</th>
-            <th>Keluhan</th>
-            <th>Spesialis</th>
             <th>No Handphone</th>
             <th>Email</th>
+            <th>Keluhan</th>
+            <th>Spesialis</th>
+            <th>Dokter</th>
             <th>Tanggal Booking</th>
             <th>Jam Booking</th>
             <th>Status</th>
@@ -44,6 +49,7 @@
           
             <td> </td>
             <td> </td>
+            <td></td>
             <td></td>
             <td></td>
             <td></td>

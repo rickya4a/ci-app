@@ -34,7 +34,7 @@ $routes->setAutoRoute(true);
 $routes->get('/', '\Frontend\Home::index');
 $routes->post('users/auth', '\Frontend\Users::auth');
 $routes->get('users/logout', '\Frontend\Users::logout');
-// $routes->post('pemeriksaan/view', '\Frontend\pemeriksaan::view');
+
 
 $routes->match(
     ['get', 'post'],
