@@ -38,22 +38,15 @@ class Examination extends Migration
             ],
             'time_booking' => [
                 'type'           => 'TIME',
-               
 			],
 			'id_specialist' => [
                 'type'           => 'INT',
-                'constraint'     => 11,
-                'unsigned'       => TRUE,
-                'auto_increment' => TRUE
-               
+                'constraint'     => 11, 
 			],
 			'id_doctor' => [
                 'type'           => 'INT',
                 'constraint'     => 11,
-                'unsigned'       => TRUE,
-                'auto_increment' => TRUE
-               
-			],
+    		],
 			'status' => [
                 'type'           => 'INT',
 				'constraint'     => 11,
