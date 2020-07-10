@@ -14,9 +14,9 @@ class UserModel extends Model {
         'sex',
         'date_of_birth',
         'place_of_birth',
+        'address',
         'religion',
         'status_meried',
-        'address',
         'id_no'
     ];
 
