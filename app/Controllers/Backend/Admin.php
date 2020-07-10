@@ -12,7 +12,7 @@ class Admin extends BaseController {
      */
     public function index() {
         $data['title'] = 'Admin Dashboard';
-        $data['content'] = view('backend/dashboard');
+        $data['content'] = view('backend/dashboard', $data);
         echo view($this->backend, $data);
     }
 

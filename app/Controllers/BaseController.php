@@ -52,8 +52,4 @@ class BaseController extends Controller {
         // Backend dir
         $this->backend = 'backend/templates/layout';
     }
-
-    public function rules($array) {
-        return \implode("|", $array);
-    }
 }

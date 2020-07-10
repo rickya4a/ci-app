@@ -116,7 +116,25 @@ $session = service('session');
             </ul>
             <li>
               <a
-                href="<?php echo base_url('users/logout')?>"
+                href="#"
+                class="dropdown-toggle"
+                data-toggle="dropdown"
+                role="button"
+                aria-expanded="false"
+              >Booking<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li class="<?php $page->active('pemeriksaan')?>">
+                  <a href="<?php echo base_url('pemeriksaan')?>"
+                  >Booking Pemeriksaan</a>
+                </li>
+                <li class="<?php $page->active('konsultasi')?>">
+                  <a href="<?php echo base_url('konsultasi')?>"
+                  >Booking Konsultasi</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="<?php echo base_url('users/logout')?>"
               >Log Out (<?php echo $session->username ?>)</a>
             </li>
           <?php else: ?>
