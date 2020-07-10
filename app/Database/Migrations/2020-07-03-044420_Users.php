@@ -43,6 +43,10 @@ class Users extends Migration
                 'type'           => 'VARCHAR',
                 'constraint'     => 20,
             ],
+          'address' => [
+                'type'           => 'TEXT',
+                'null'           => TRUE
+            ],
             'religion' => [
                 'type'           => 'VARCHAR',
                 'constraint'     => 10,
@@ -50,10 +54,6 @@ class Users extends Migration
             'status_meried' => [
                 'type'          => 'VARCHAR',
                 'constraint'    => 15,
-            ],
-            'address' => [
-                'type'           => 'TEXT',
-                'null'           => TRUE
             ],
             'id_no' => [
                 'type'           => 'VARCHAR',
