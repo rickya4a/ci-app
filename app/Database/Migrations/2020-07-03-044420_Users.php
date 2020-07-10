@@ -47,7 +47,7 @@ class Users extends Migration
                 'type'           => 'VARCHAR',
                 'constraint'     => 10,
             ],
-            'status_meried'=>[
+            'status_meried' => [
                 'type'          => 'VARCHAR',
                 'constraint'    => 15,
             ],
