@@ -40,14 +40,18 @@ class Examination extends Migration
                 'type'           => 'TIME',
                
 			],
-			'name_specialist' => [
-				'type'           => 'VARCHAR',
-                'constraint'     => 20,
+			'id_specialist' => [
+                'type'           => 'INT',
+                'constraint'     => 11,
+                'unsigned'       => TRUE,
+                'auto_increment' => TRUE
                
 			],
-			'name_doctor' => [
-				'type'           => 'VARCHAR',
-                'constraint'     => 20,
+			'id_doctor' => [
+                'type'           => 'INT',
+                'constraint'     => 11,
+                'unsigned'       => TRUE,
+                'auto_increment' => TRUE
                
 			],
 			'status' => [
@@ -65,8 +69,8 @@ class Examination extends Migration
         ]);
         $this->forge->addKey('id', TRUE);
         $this->forge->addKey('username');
-        $this->forge->addKey('name_specialist');
-        $this->forge->addKey('name_doctor');
+        $this->forge->addKey('id_specialist');
+        $this->forge->addKey('id_doctor');
         $this->forge->createTable('examination');
 	}
 
