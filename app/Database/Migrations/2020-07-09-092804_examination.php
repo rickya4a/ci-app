@@ -50,10 +50,6 @@ class Examination extends Migration
                 'constraint'     => 20,
                
 			],
-			'time_booking' => [
-                'type'           => 'TIME',
-               
-			],
 			'status' => [
                 'type'           => 'INT',
 				'constraint'     => 11,

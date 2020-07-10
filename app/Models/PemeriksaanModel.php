@@ -12,9 +12,12 @@ class PemeriksaanModel extends Model {
         'password',
         'phone',
         'sex',
-        'date_of_birth',
-        'place_of_birth',
+        'date_of_booking',
+        'time_booking',
+        'name_specialist',
+        'name_doctor',
         'address',
+        'status',
         'id_no'
     ];
 

@@ -56,7 +56,11 @@ $routes->match(         //routes page pemeriksaan/view
     'pemeriksaan/view',
     '\Frontend\Pemeriksaan::view'
 );
-
+$routes->match(        
+    ['get','post'],
+    'pemeriksaan/create',
+    '\Frontend\Pemeriksaan::create'
+);
 
 $routes->get('backend/login', '\Backend\Admin::login');
 $routes->post('backend/auth', '\Backend\Admin::auth');

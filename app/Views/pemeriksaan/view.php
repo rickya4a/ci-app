@@ -20,14 +20,14 @@
 <section id="section16" class="section16">
   <div class="container">
     <div class="col-lg-12">
-          <a href="#"onclick="return confirm('Yakin hapus data?')">
+          <a href="<?php echo base_url('pemeriksaan/create')?>">
               <button class="btn btn-primary btn-sm"> <i class="fa fa-plus"></i> Tambah </button>
           </a>
             <p></p>
      <br>
-      <table class="table table-bordered">
+      <table class="table table-bordered table-striped">
         <thead>
-          <tr>
+          <tr class="bg-primary">
        
             <th>No</th>
             <th>Nama Pasien</th>
