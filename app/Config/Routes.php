@@ -39,12 +39,41 @@ $routes->get('/', '\Frontend\Home::index');
 $routes->post('users/auth', '\Frontend\Users::auth');
 $routes->get('users/logout', '\Frontend\Users::logout');
 
+<<<<<<< HEAD
 /**
  * Reset password routes
  */
 $routes->match(['get', 'post'], 'users/register', '\Frontend\Users::register');
 $routes->match(['get', 'post'], 'users/reset-password', '\Frontend\Users::reset_password');
 $routes->post('users/confirmation-reset', '\Frontend\Users::confirm_reset_password');
+=======
+
+$routes->match(
+    ['get', 'post'],
+    'users/register',
+    '\Frontend\Users::register'
+);
+
+$routes->match(
+    ['get', 'post'],
+    'users/reset-password',
+    '\Frontend\Users::reset_password'
+);
+$routes->post(
+    'users/confirmation-reset',
+    '\Frontend\Users::confirm_reset_password'
+);
+$routes->match(         //routes page pemeriksaan/view
+    ['get','post'],
+    'pemeriksaan/view',
+    '\Frontend\Pemeriksaan::view'
+);
+$routes->match(        
+    ['get','post'],
+    'pemeriksaan/create',
+    '\Frontend\Pemeriksaan::create'
+);
+>>>>>>> 0f62deda54cea0978edeb371777d69adb197b529
 
 /**
  * Backend routes

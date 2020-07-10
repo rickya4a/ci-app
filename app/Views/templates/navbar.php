@@ -42,7 +42,7 @@ $session = service('session');
         </button>
         <a class="navbar-brand" href="<?php echo base_url('/') ?>">
           <div class="logo-text">
-            <span><samp>K</samp>Klinik</span>
+            <span><samp>J</samp>Medical Homecare</span>
           </div>
         </a>
       </div>
@@ -98,6 +98,26 @@ $session = service('session');
           </li>
           <?php if (!empty($session->username)): ?>
             <li class="dropdown">
+<<<<<<< HEAD
+=======
+            <a
+              href="#"
+              class="dropdown-toggle"
+              data-toggle="dropdown"
+              role="button"
+              aria-expanded="false"
+            >Booking<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li>
+              <a href="<?php echo base_url('pemeriksaan/view')?>">
+              Booking Pemeriksaan</a></li>
+              <li class="<?php $page->active('konsultasi')?>">
+              <a href="<?php echo base_url('konsultasi')?>">
+              Booking Konsultasi</a></li>
+              <li class="divider"></li>
+            </ul>
+            <li>
+>>>>>>> 0f62deda54cea0978edeb371777d69adb197b529
               <a
                 href="#"
                 class="dropdown-toggle"
