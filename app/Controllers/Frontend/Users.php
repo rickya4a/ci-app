@@ -80,6 +80,8 @@ class Users extends BaseController {
                     'sex' => $this->request->getVar('jenis_kelamin'),
                     'date_of_birth' => $this->request->getVar('tanggal_lahir'),
                     'place_of_birth' => $this->request->getVar('tempat_lahir'),
+                    'religion' => $this->request->getVar('agama'),
+                    'status_meried' => $this->request->getVar('status_perkawinan'),
                     'address' => $this->request->getVar('alamat'),
                     'id_no' => $this->request->getVar('no_ktp')
                 ]);

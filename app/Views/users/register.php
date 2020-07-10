@@ -122,6 +122,31 @@
           </div>
 
           <div class="control-group form-group">
+              <div class="controls">
+                <label>Agama</label>
+                <select name="agama" class="form-control">
+                  <option value="islam">Islam</option>
+                  <option value="kristen">Kristen</option>
+                  <option value="katolik">Katolik</option>
+                  <option value="budha">Budha</option>
+                  <option value="hindu">hindu</option>
+                  <option value="khonghucu">Khonghucu</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="control-group form-group">
+              <div class="controls">
+                <label>Status Perkawinan</label>
+                <select name="status_perkawinan" class="form-control">
+                  <option value="sudah menikah">Sudah Menikah</option>
+                  <option value="belum menikah">Belum Menikah</option>
+                  <option value="bercererai">Bercererai</option>
+                </select>
+              </div>
+            </div>
+
+          <div class="control-group form-group">
             <div class="controls">
               <label>No KTP </label>
               <input

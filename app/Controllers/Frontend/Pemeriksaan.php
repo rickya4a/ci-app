@@ -31,7 +31,7 @@ class Pemeriksaan extends BaseController {
      * @return void
      */
     public function view() {
-         $data['title'] = 'JMH | Home';
+         $data['title'] = 'JMH | Booking Pemeriksaan';
         $data['content'] = view('pemeriksaan/view', $data);
         echo view('templates/layout', $data);
     }
@@ -48,7 +48,7 @@ class Pemeriksaan extends BaseController {
             'title' => 'required|min_length[3]|max_length[255]',
             'body'	=> 'required'
         ])) {
-            $data['title'] = 'pemeriksaan';
+            $data['title'] = 'JMH | Booking Pemeriksaan';
             $data['content'] = view('pemeriksaan/create');
             echo view('templates/layout', $data);
         } else {
