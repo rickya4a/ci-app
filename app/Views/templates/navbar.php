@@ -98,8 +98,6 @@ $session = service('session');
           </li>
           <?php if (!empty($session->username)): ?>
             <li class="dropdown">
-<<<<<<< HEAD
-=======
             <a
               href="#"
               class="dropdown-toggle"
@@ -117,7 +115,6 @@ $session = service('session');
               <li class="divider"></li>
             </ul>
             <li>
->>>>>>> 0f62deda54cea0978edeb371777d69adb197b529
               <a
                 href="#"
                 class="dropdown-toggle"
