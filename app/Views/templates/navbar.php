@@ -42,7 +42,7 @@ $session = service('session');
         </button>
         <a class="navbar-brand" href="<?php echo base_url('/') ?>">
           <div class="logo-text">
-            <span><samp>K</samp>Klinik</span>
+            <span><samp>J</samp>Medical Homecare</span>
           </div>
         </a>
       </div>
