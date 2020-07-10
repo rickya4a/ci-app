@@ -8,7 +8,7 @@ $session = Services::session();
 // can override as needed.
 if (file_exists(SYSTEMPATH . 'Config/Routes.php'))
 {
-	require SYSTEMPATH . 'Config/Routes.php';
+    require SYSTEMPATH . 'Config/Routes.php';
 }
 
 /**
@@ -32,41 +32,36 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', '\Frontend\Home::index');
+
+/**
+ * User auth routes
+ */
 $routes->post('users/auth', '\Frontend\Users::auth');
 $routes->get('users/logout', '\Frontend\Users::logout');
 
-$routes->match(
-    ['get', 'post'],
-    'users/register',
-    '\Frontend\Users::register'
-);
+/**
+ * Reset password routes
+ */
+$routes->match(['get', 'post'], 'users/register', '\Frontend\Users::register');
+$routes->match(['get', 'post'], 'users/reset-password', '\Frontend\Users::reset_password');
+$routes->post('users/confirmation-reset', '\Frontend\Users::confirm_reset_password');
 
-$routes->match(
-    ['get', 'post'],
-    'users/reset-password',
-    '\Frontend\Users::reset_password'
-);
-$routes->post(
-    'users/confirmation-reset',
-    '\Frontend\Users::confirm_reset_password'
-);
-
-
+/**
+ * Backend routes
+ */
 $routes->get('backend/login', '\Backend\Admin::login');
 $routes->post('backend/auth', '\Backend\Admin::auth');
 $routes->get('backend/logout', '\Backend\Admin::logout');
 $routes->match(['get', 'post'],'backend/register', '\Backend\Admin::register');
 $routes->group('backend', ['filter' => 'backend_auth'], function($routes) {
     $routes->get('dashboard', '\Backend\Admin::index');
+    $routes->get('news', '\Backend\News::index');
+    $routes->match(['get', 'post'], 'news/create', '\Backend\News::create');
 });
 
-
-$routes->match(
-    ['get', 'post'],
-    'news/create',
-    '\Frontend\News::create'
-);
-
+/**
+ * Pages routes
+ */
 $routes->get('(:any)', '\Frontend\Pages::view/$1');
 
 /**

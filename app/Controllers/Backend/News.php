@@ -1,4 +1,4 @@
-<?php namespace Frontend;
+<?php namespace Backend;
 
 use App\Models\NewsModel;
 use CodeIgniter\Exceptions\PageNotFoundException;
@@ -13,13 +13,10 @@ class News extends BaseController {
      */
     public function index() {
         $model = new NewsModel();
-        $data = [
-            'news' => $model->getNews(),
-            'title' => 'News Archive'
-        ];
-
-        $data['content'] = view('news/overview', $data);
-        echo view('templates/layout', $data);
+        $data['news'] = $model->getNews();
+        $data['title'] = 'News';
+        $data['content'] = view('backend/pages/index', $data);
+        return view($this->backend, $data);
     }
 
     /**
@@ -42,7 +39,7 @@ class News extends BaseController {
         $data['title'] = $data['news']['title'];
 
         $data['content'] = view('news/view', $data);
-        echo view('templates/layout', $data);
+        echo view($this->backend, $data);
     }
 
     /**
@@ -57,11 +54,17 @@ class News extends BaseController {
             'title' => 'required|min_length[3]|max_length[255]',
             'body'	=> 'required'
         ])) {
-            $data['title'] = 'news';
-            $data['content'] = view('news/create');
-            echo view('templates/layout', $data);
+            $data['title'] = 'Add Entry';
+            $data['content'] = view('backend/pages/create', $data);
+            echo view($this->backend, $data);
         } else {
-            $save = $model->save([
+            $data = $this->request->getPost();
+            $data['slug'] = \url_title($data['title']);
+            $data['img'] = $this->request->getFile('image');
+            echo '<pre>';
+            print_r($data);
+            echo '</pre>';
+            /* $save = $model->save([
                 'title' => $this->request->getVar('title'),
                 'slug'	=> url_title($this
                                     ->request
@@ -85,7 +88,7 @@ class News extends BaseController {
 
                 $data['error'] = $this->session->get('error');
                 echo view('news/error', $data);
-            }
+            } */
         }
     }
 }
