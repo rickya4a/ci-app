@@ -34,6 +34,7 @@ $routes->setAutoRoute(true);
 $routes->get('/', '\Frontend\Home::index');
 $routes->post('users/auth', '\Frontend\Users::auth');
 $routes->get('users/logout', '\Frontend\Users::logout');
+// $routes->post('pemeriksaan/view', '\Frontend\pemeriksaan::view');
 
 $routes->match(
     ['get', 'post'],
@@ -50,11 +51,11 @@ $routes->post(
     'users/confirmation-reset',
     '\Frontend\Users::confirm_reset_password'
 );
-// $router->match(
-//     ['get','post'],
-//     'pemeriksaan/view',
-//     '\Frontend\Pemeriksaan::view'
-// );
+$routes->match(         //routes page pemeriksaan/view
+    ['get','post'],
+    'pemeriksaan/view',
+    '\Frontend\Pemeriksaan::view'
+);
 
 
 $routes->get('backend/login', '\Backend\Admin::login');

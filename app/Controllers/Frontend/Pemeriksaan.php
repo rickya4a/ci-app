@@ -31,18 +31,7 @@ class Pemeriksaan extends BaseController {
      * @return void
      */
     public function view() {
-        $model = new PemeriksaanModel();
-
-        $data['pemeriksaan'] = $model->getPemeriksaan($slug);
-
-        if (empty($data['pemeriksaan'])) {
-            throw new PageNotFoundException(
-                'Cannot find the pemeriksaan item: '. $slug
-            );
-        }
-
-        $data['title'] = $data['pemeriksaan']['title'];
-
+         $data['title'] = 'JMH | Home';
         $data['content'] = view('pemeriksaan/view', $data);
         echo view('templates/layout', $data);
     }

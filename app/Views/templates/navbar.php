@@ -107,7 +107,7 @@ $session = service('session');
             >Booking<span class="caret"></span></a>
             <ul class="dropdown-menu">
               <li>
-              <a href="<?php echo base_url('pemeriksaan')?>">
+              <a href="<?php echo base_url('pemeriksaan/view')?>">
               Booking Pemeriksaan</a></li>
               <li class="<?php $page->active('konsultasi')?>">
               <a href="<?php echo base_url('konsultasi')?>">
