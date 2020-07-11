@@ -4,7 +4,7 @@
         <strong>Copyright &copy; <?= date('Y') ?> <a href="#">JMH</a>.</strong>
         All rights reserved.
         <div class="float-right d-none d-sm-inline-block">
-          <b>Version</b> 3.0.5
+          <b>Ver.</b> <?= getenv('app.version') ?>
         </div>
       </footer>
     <?php } ?>
@@ -22,18 +22,22 @@
     <?= script_tag('assets/js/daterangepicker.js') ?>
     <!-- Tempusdominus Bootstrap 4 -->
     <?= script_tag('assets/js/tempusdominus-bootstrap-4.min.js') ?>
-    <!-- AdminLTE App -->
-    <?= script_tag('assets/js/adminlte.js') ?>
     <!-- Summernote -->
     <?= script_tag('assets/js/summernote-bs4.min.js') ?>
     <!-- BS custom file input -->
     <?= script_tag('assets/js/bs-custom-file-input.min.js') ?>
+    <!-- AdminLTE App -->
+    <?= script_tag('assets/js/adminlte.js') ?>
+    <!-- Demo js -->
+    <?= script_tag('assets/js/demo.js') ?>
 
     <!-- plugin init -->
     <script>
       $(function () {
         // Summernote
-        $('.textarea').summernote()
+        $('.textarea').summernote({
+          height: 200
+        })
       })
       $.widget.bridge('uibutton', $.ui.button)
     </script>

@@ -9,6 +9,10 @@ class BackendFilter implements FilterInterface
     public function before(RequestInterface $request) {
         $auth = \Config\Services::auth();
         if (!$auth->isAdminLoggedIn()) {
+            $auth->session->setFlashdata(
+                'error',
+                'Login dulu'
+            );
             return redirect('backend/login');
         }
     }

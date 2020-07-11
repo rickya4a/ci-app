@@ -1,10 +1,9 @@
 <!-- Error handler -->
 <?php echo view('errors/_errors_list'); ?>
-<!-- Error handler -->
 
 <div class="register-box">
   <div class="register-logo">
-    <a href="#"><b>Admin</b>Medicamp</a>
+    <a href="#"><b>Admin</b>JMH</a>
   </div>
 
   <div class="card">

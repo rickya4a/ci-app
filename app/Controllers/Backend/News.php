@@ -49,46 +49,147 @@ class News extends BaseController {
      */
     public function create() {
         $model = new NewsModel();
+        $data = $this->request->getPost();
 
-        if (! $this->validate([
-            'title' => 'required|min_length[3]|max_length[255]',
-            'body'	=> 'required'
-        ])) {
+        if (empty($data)) {
             $data['title'] = 'Add Entry';
             $data['content'] = view('backend/pages/create', $data);
-            echo view($this->backend, $data);
+            return view($this->backend, $data);
         } else {
-            $data = $this->request->getPost();
-            $data['slug'] = \url_title($data['title']);
-            $data['img'] = $this->request->getFile('image');
-            echo '<pre>';
-            print_r($data);
-            echo '</pre>';
-            /* $save = $model->save([
-                'title' => $this->request->getVar('title'),
-                'slug'	=> url_title($this
-                                    ->request
-                                    ->getVar('title'), '-', TRUE),
-                'body'	=> $this->request->getVar('body')
-            ]);
-
-            if ($save === true) {
+            if ($this->validation->run($data, 'news') === FALSE) {
+                // Set error if errrors occured
                 $this->session->setFlashdata(
-                    'success',
-                    'News item created successfully'
+                    'errors',
+                    $this->validation->getErrors()
                 );
-
-                $data['success'] = $this->session->get('success');
-                echo view('news/success', $data);
+                // Redirect to prev route
+                return redirect()->back();
             } else {
-                $this->session->setFlashdata(
-                    'error',
-                    'Failed to insert data'
-                );
+                // Get image
+                $image = $this->request->getFile('image');
+                // Set new name
+                $file_name = $image->getRandomName();
 
-                $data['error'] = $this->session->get('error');
-                echo view('news/error', $data);
-            } */
+                // Set news slug
+                $data['slug'] = \url_title($data['title'], '-', TRUE);
+                // define image relative path
+                $data['img_path'] = 'uploads/'.$file_name;
+
+                // Save data
+                $save = $model->save([
+                    'title' => $data['title'],
+                    'body' => $data['body'],
+                    'img_path' => $data['img_path'],
+                    'slug' => $data['slug']
+                ]);
+
+                if ($save === TRUE) {
+                    // Save image to WRITEPATH.'uploads'
+                    $image->move(ROOTPATH . 'public/uploads', $file_name);
+
+                    // Set success message
+                    $this->session->setFlashdata(
+                        'success',
+                        'News item created successfully'
+                    );
+
+                    return redirect()->to(\site_url('backend/news'));
+                } else {
+                    // Fallback errors
+                    $this->session->setFlashdata(
+                        'error',
+                        'Failed to insert data'
+                    );
+                    return redirect()->to(\site_url('backend/news'));
+                }
+            }
+        }
+    }
+
+    public function editNews($slug) {
+        $model = new NewsModel();
+        $data = $this->request->getPost();
+
+        if ($this->request->getMethod() !== 'post') {
+            $data['title'] = 'Edit Entry';
+            $data['news'] = $model->getNews($slug);
+
+            $data['content'] = view('backend/pages/edit', $data);
+            return view($this->backend, $data);
+        } else {
+            if ($this->validation->run($data, 'news') === FALSE) {
+                // Set error if errrors occured
+                $this->session->setFlashdata(
+                    'errors',
+                    $this->validation->getErrors()
+                );
+                // Redirect to prev route
+                return redirect()->back();
+            } else {
+                // Get image
+                $image = $this->request->getFile('image');
+                // Set new name
+                $file_name = $image->getRandomName();
+
+                // Set news slug
+                $data['slug'] = \url_title($data['title'], '-', TRUE);
+                // define image relative path
+                $data['img_path'] = 'uploads/'.$file_name;
+
+                $idNews = $model->getNews($slug)['id'];
+
+                $news = [
+                    'id' => $idNews,
+                    'title' => $data['title'],
+                    'body' => $data['body'],
+                    'img_path' => $data['img_path'],
+                    'slug' => $data['slug']
+                ];
+
+                $update = $model->updateNews($news);
+
+                if ($update === TRUE) {
+                    // Save image to WRITEPATH.'uploads'
+                    $image->move(ROOTPATH . 'public/uploads', $file_name);
+
+                    // Set success message
+                    $this->session->setFlashdata(
+                        'success',
+                        'News item updated successfully'
+                    );
+
+                    return redirect()->to(\site_url('backend/news'));
+                } else {
+                    // Fallback errors
+                    $this->session->setFlashdata(
+                        'error',
+                        'Failed to update data'
+                    );
+                    return redirect()->to(\site_url('backend/news'));
+                }
+            }
+        }
+
+    }
+
+    public function deleteNews($id) {
+        $model = new NewsModel();
+        $query = $model->delete(['id' => $id]);
+
+        if ($model->db->affectedRows() === 1) {
+            $this->session->setFlashdata(
+                'success',
+                'News has been deleted'
+            );
+
+            return redirect()->to(\site_url('backend/news'));
+        } else {
+            $this->session->setFlashdata(
+                'error',
+                'Failed to insert data'
+            );
+
+            return redirect()->to(\site_url('backend/news'));
         }
     }
 }

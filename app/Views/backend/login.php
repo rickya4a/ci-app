@@ -3,12 +3,15 @@
     <i class="fa fa-check"></i>
     <?php echo session()->getFlashdata('success'); ?>
   </p>
+<?php elseif (session('error')): ?>
+  <p class="danger alert alert-danger">
+    <i class="fa fa-ban"></i>
+    <?php echo session()->getFlashdata('error'); ?>
+  </p>
 <?php endif ?>
 
 <!-- Error handler -->
-<?php echo view('errors/_errors_list'); ?>
-<!-- Error handler -->
-
+<?php echo view('errors/_errors_login'); ?>
 
 <div class="login-box">
   <div class="login-logo">

@@ -57,6 +57,8 @@ $routes->group('backend', ['filter' => 'backend_auth'], function($routes) {
     $routes->get('dashboard', '\Backend\Admin::index');
     $routes->get('news', '\Backend\News::index');
     $routes->match(['get', 'post'], 'news/create', '\Backend\News::create');
+    $routes->get('news/delete/(:any)', '\Backend\News::deleteNews/$1');
+    $routes->match(['get', 'post'], 'news/edit/(:any)', '\Backend\News::editNews/$1');
 });
 
 /**

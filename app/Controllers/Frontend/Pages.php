@@ -4,18 +4,27 @@ use \CodeIgniter\Exceptions\PageNotFoundException;
 
 use App\Controllers\BaseController;
 
+use App\Models\NewsModel;
+
 class Pages extends BaseController {
-    public function index() {
-        return view('welcome_message');
-    }
+    public function view($slug = FALSE) {
+        $model = new NewsModel();
 
-    public function view($page = 'home') {
-        if (! is_file(APPPATH.'/Views/pages/'.$page.'.php')) {
-            throw new PageNotFoundException($page);
+        $data['news'] = $model->getNews($slug);
+        if ($slug === 'about') {
+            $data['title'] = 'About';
+            $data['content'] = view('pages/about', $data);
+            echo view('templates/layout', $data);
+        } else {
+            if (empty($data['news'])) {
+                throw new PageNotFoundException(
+                    'Cannot find the news item: '. $slug
+                );
+            }
+            $data['title'] = $data['news']['title'];
+
+            $data['content'] = view('pages/news', $data);
+            echo view('templates/layout', $data);
         }
-
-        $data['title'] = ucfirst($page); // Capitalize the first letter
-        $data['content'] = view('pages/'.$page, $data);
-        echo view('templates/layout', $data);
     }
 }

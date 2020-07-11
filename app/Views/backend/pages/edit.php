@@ -4,7 +4,7 @@
 
   <!-- Main content -->
   <section class="content">
-    <?php echo form_open_multipart('backend/news/create', 'id="myform"') ?>
+    <?php echo form_open_multipart('backend/news/edit/'.$news['slug'], 'id="myform"') ?>
       <?= csrf_field() ?>
       <div class="row">
         <div class="col-md-12">

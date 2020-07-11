@@ -126,4 +126,10 @@ class Validation
         'password' => 'required|alpha_numeric|min_length[8]|max_length[50]',
         'confirm_password' => 'required|matches[password]'
     ];
+
+    public $news = [
+        'title' => 'required|alpha_numeric_space',
+        'body' => 'required|min_length[5]',
+        'image' => 'uploaded[image]|mime_in[image,image/jpg,image/jpeg,image/gif,image/png]|max_size[image,2048]'
+    ];
 }

@@ -148,6 +148,7 @@
 </section>
 <section id="section14" class="section-margine">
   <div class="container">
+
     <div class="row">
       <div class="col-md-12 col-lg-12">
         <header class="title-head">
@@ -163,26 +164,31 @@
     </div>
 
     <div class="row">
-      <div class="col-md-4 col-lg-4">
-        <div class="section-14-box wow fadeInUp">
-          <img src="<?php echo base_url('assets/images/blog/blog-1.jpg') ?>" class="img-responsive" alt="Blog image 1">
-          <h3 align = "justify"><a href="berita.php">Judul Berita</a></h3>
-          <div class="row">
-            <div class="col-md-12 col-lg-12">
-              <div class="comments">
-                <a class="btn btn-primary btn-sm"> 09-07-2020</a>
-                <a href="berita.php" class="btn btn-primary btn-sm">Lihat</a>
+      <?php foreach ($news as $data): ?>
+        <div class="col-md-4 col-lg-4">
+          <div class="section-14-box wow fadeInUp">
+            <?= img($data['img_path'], FALSE, ['class' => 'img-responsive']) ?>
+            <h3 align = "justify">
+              <a href="<?= $data['slug'] ?>"><?= word_limiter($data['title'], 5) ?></a>
+            </h3>
+            <div class="row">
+              <div class="col-md-12 col-lg-12">
+                <div class="comments">
+                  <a class="btn btn-primary btn-sm"> <?= date('Y-m-d', strtotime($data['updated'])) ?></a>
+                  <a
+                    href="<?= $data['slug'] ?>"
+                    class="btn btn-primary btn-sm"
+                  >Lihat</a>
+                </div>
               </div>
             </div>
+            <p align = "justify"
+            ><?= word_limiter($data['body'], 8) ?></p>
           </div>
-          <p align = "justify">Liputan6.com, Jakarta Manfaat makan apel dengan kulitnya ternyata 
-          sangat baik untuk kesehatan. Padahal tidak sedikit juga orang yang memilih makan apel 
-          dengan dikupas terlebih dahulu. Padahal makan apel dengan mengupas kulitnya ini dapa..
-         </p>
         </div>
-      </div>
-            
+      <?php endforeach ?>
     </div>
+
   </div>
 </section>
 <section id="section9" class="section-margine section-9-background">

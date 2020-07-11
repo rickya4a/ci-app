@@ -21,8 +21,7 @@ class News extends Migration
             ],
             'img_path' => [
                 'type'           => 'VARCHAR',
-                'constraint'     => 255,
-                'null'           => TRUE,
+                'constraint'     => 255
             ],
             'slug' => [
                 'type'           => 'VARCHAR',

@@ -19,13 +19,8 @@ class PageService {
                 echo 'hold-transition register-page';
                 break;
             default:
-                echo 'hold-transition sidebar-mini layout-fixed';
+                echo 'hold-transition sidebar-mini';
                 break;
         }
-        /* if (uri_string() === 'backend/login') {
-            echo 'hold-transition login-page';
-        } else {
-            echo 'hold-transition sidebar-mini layout-fixed';
-        } */
     }
 }

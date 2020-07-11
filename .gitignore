@@ -4,3 +4,4 @@
 /writable/session/ci_session*
 /writable/debugbar/*
 /writable/logs/*.log
+public/uploads/*
