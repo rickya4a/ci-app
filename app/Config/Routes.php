@@ -54,11 +54,16 @@ $routes->post('backend/auth', '\Backend\Admin::auth');
 $routes->get('backend/logout', '\Backend\Admin::logout');
 $routes->match(['get', 'post'],'backend/register', '\Backend\Admin::register');
 $routes->group('backend', ['filter' => 'backend_auth'], function($routes) {
+    // Main menu
     $routes->get('dashboard', '\Backend\Admin::index');
+    // News admin
     $routes->get('news', '\Backend\News::index');
     $routes->match(['get', 'post'], 'news/create', '\Backend\News::create');
     $routes->get('news/delete/(:any)', '\Backend\News::deleteNews/$1');
     $routes->match(['get', 'post'], 'news/edit/(:any)', '\Backend\News::editNews/$1');
+    // Users admin
+    $routes->get('users', '\Backend\Users::index');
+    $routes->get('users/delete/(:any)', '\Backend\Users::deleteUsers/$1');
 });
 
 /**

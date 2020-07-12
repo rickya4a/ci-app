@@ -1,7 +1,9 @@
 <?php namespace Backend;
 
 use App\Models\NewsModel;
+
 use CodeIgniter\Exceptions\PageNotFoundException;
+
 use App\Controllers\BaseController;
 
 class News extends BaseController {
@@ -169,9 +171,14 @@ class News extends BaseController {
                 }
             }
         }
-
     }
 
+    /**
+     * Delete news
+     *
+     * @param int $id
+     * @return void
+     */
     public function deleteNews($id) {
         $model = new NewsModel();
         $query = $model->delete(['id' => $id]);
@@ -186,7 +193,7 @@ class News extends BaseController {
         } else {
             $this->session->setFlashdata(
                 'error',
-                'Failed to insert data'
+                'Failed to delete data'
             );
 
             return redirect()->to(\site_url('backend/news'));

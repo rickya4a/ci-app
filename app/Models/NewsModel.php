@@ -7,20 +7,24 @@ class NewsModel extends Model {
 
     protected $allowedFields = ['title', 'slug', 'img_path', 'body'];
 
+    function __construct() {
+        $this->db = \Config\Database::connect();
+        $this->builder = $this->db->table($this->table);
+    }
+
     /**
      * Fetch data
      *
-     * @param boolean $slug
+     * @param string $slug
      * @return array
      */
     public function getNews($slug = FALSE) {
         if ($slug === FALSE) {
-            return $this->findAll();
+            return $this->builder->get()->getResultArray();
         }
 
-        return $this->asArray()
-                    ->where(['slug' => $slug])
-                    ->first();
+        return $this->builder->getWhere(['slug' => $slug])
+                            ->getFirstRow('array');
     }
 
     /**

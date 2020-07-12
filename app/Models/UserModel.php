@@ -20,6 +20,22 @@ class UserModel extends Model {
         'id_no'
     ];
 
+    function __construct() {
+        $this->db = \Config\Database::connect();
+        $this->builder = $this->db->table($this->table);
+    }
+
+    /**
+     * Get all users
+     *
+     * @return object
+     */
+    public function getUsers() {
+        return $this->builder->select('*')
+                             ->get()
+                             ->getResultObject();
+    }
+
     /**
      * Get user credentials
      *

@@ -43,6 +43,13 @@
             <p>Pages</p>
           </a>
         </li>
+        <li class="nav-item">
+          <a href="<?php echo base_url('backend/users') ?>"
+            class="nav-link <?php echo $page->active('backend/users') ?>">
+            <i class="nav-icon fas fa-user"></i>
+            <p>User</p>
+          </a>
+        </li>
       </ul>
     </nav>
     <!-- /.sidebar-menu -->

@@ -1,6 +1,11 @@
 <?php namespace Backend;
 
 use App\Models\AdminModel;
+
+use App\Models\UserModel;
+
+use App\Models\NewsModel;
+
 use App\Controllers\BaseController;
 
 class Admin extends BaseController {
@@ -11,6 +16,11 @@ class Admin extends BaseController {
      * @return void
      */
     public function index() {
+        $news = new NewsModel();
+        $user = new UserModel();
+
+        $data['news'] = $news->builder->countAll();
+        $data['user'] = $user->builder->countAll();
         $data['title'] = 'Admin Dashboard';
         $data['content'] = view('backend/dashboard', $data);
         echo view($this->backend, $data);
