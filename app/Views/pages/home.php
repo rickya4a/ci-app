@@ -183,7 +183,7 @@
               </div>
             </div>
             <p align = "justify"
-            ><?= word_limiter($data['body'], 8) ?></p>
+            ><?= word_limiter($data['body'], 25) ?></p>
           </div>
         </div>
       <?php endforeach ?>
