@@ -52,7 +52,7 @@
                 <td><?= $row['title'] ?></td>
                 <td><?= word_limiter($row['body'], 8) ?></td>
                 <td><?= img($row['img_path'], FALSE, ['class' => 'table-avatar']) ?></td>
-                <td><?= date('Y-m-d', strtotime($row['updated'])) ?></td>
+                <td><?= date('Y-m-d H:i:s', strtotime($row['updated'])) ?></td>
                 <td class="project-actions text-right">
                   <div class="row">
                     <a

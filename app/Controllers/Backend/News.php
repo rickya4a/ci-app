@@ -28,18 +28,23 @@ class News extends BaseController {
      * @return void
      */
     public function view($slug = null) {
+        // Create news instance
         $model = new NewsModel();
 
+        // Get news by selected slug
         $data['news'] = $model->getNews($slug);
 
+        // Check if news availability
         if (empty($data['news'])) {
             throw new PageNotFoundException(
                 'Cannot find the news item: '. $slug
             );
         }
 
+        // Set page title based on news title
         $data['title'] = $data['news']['title'];
 
+        // Display news page
         $data['content'] = view('news/view', $data);
         echo view($this->backend, $data);
     }
@@ -50,16 +55,21 @@ class News extends BaseController {
      * @return void
      */
     public function create() {
+        // Create news instance
         $model = new NewsModel();
+        // Fetch all post data
         $data = $this->request->getPost();
 
+        // Check if post data availability
         if (empty($data)) {
             $data['title'] = 'Add Entry';
+
+            // Display create news page
             $data['content'] = view('backend/pages/create', $data);
             return view($this->backend, $data);
         } else {
             if ($this->validation->run($data, 'news') === FALSE) {
-                // Set error if errrors occured
+                // Set error flash data
                 $this->session->setFlashdata(
                     'errors',
                     $this->validation->getErrors()
@@ -85,6 +95,7 @@ class News extends BaseController {
                     'slug' => $data['slug']
                 ]);
 
+                // Check if data has been saved
                 if ($save === TRUE) {
                     // Save image to WRITEPATH.'uploads'
                     $image->move(ROOTPATH . 'public/uploads', $file_name);
@@ -109,13 +120,18 @@ class News extends BaseController {
     }
 
     public function editNews($slug) {
+        // Create instanace from model
         $model = new NewsModel();
+        // Get all post data
         $data = $this->request->getPost();
 
+        // Check HTTP method
         if ($this->request->getMethod() !== 'post') {
             $data['title'] = 'Edit Entry';
+            // Fetch news data
             $data['news'] = $model->getNews($slug);
 
+            // Display edit news
             $data['content'] = view('backend/pages/edit', $data);
             return view($this->backend, $data);
         } else {
@@ -135,11 +151,13 @@ class News extends BaseController {
 
                 // Set news slug
                 $data['slug'] = \url_title($data['title'], '-', TRUE);
-                // define image relative path
+                // Define image relative path
                 $data['img_path'] = 'uploads/'.$file_name;
 
+                // Get news by ID
                 $idNews = $model->getNews($slug)['id'];
 
+                // Set all new news data
                 $news = [
                     'id' => $idNews,
                     'title' => $data['title'],
@@ -148,6 +166,7 @@ class News extends BaseController {
                     'slug' => $data['slug']
                 ];
 
+                // Update news data
                 $update = $model->updateNews($news);
 
                 if ($update === TRUE) {
@@ -180,22 +199,29 @@ class News extends BaseController {
      * @return void
      */
     public function deleteNews($id) {
+        // Create new instance
         $model = new NewsModel();
+        // Delete news by selected ID
         $query = $model->delete(['id' => $id]);
 
+        // Check if data has been deleted
         if ($model->db->affectedRows() === 1) {
+            // Set success flash data
             $this->session->setFlashdata(
                 'success',
                 'News has been deleted'
             );
 
+            // Redirect to prev route
             return redirect()->to(\site_url('backend/news'));
         } else {
+            // Set error flash data
             $this->session->setFlashdata(
                 'error',
                 'Failed to delete data'
             );
 
+            // Redirect to prev route
             return redirect()->to(\site_url('backend/news'));
         }
     }
