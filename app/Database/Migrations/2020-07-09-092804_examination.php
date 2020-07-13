@@ -40,12 +40,12 @@ class Examination extends Migration
                 'type'           => 'TIME',
 			],
 			'id_specialist' => [
-                'type'           => 'INT',
-                'constraint'     => 11, 
+                'type'           => 'VARCHAR',
+                'constraint'     => 10, 
 			],
 			'id_doctor' => [
-                'type'           => 'INT',
-                'constraint'     => 11,
+                'type'           => 'VARCHAR',
+                'constraint'     => 10,
     		],
 			'status' => [
                 'type'           => 'INT',
