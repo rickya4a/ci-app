@@ -63,7 +63,9 @@ $routes->group('backend', ['filter' => 'backend_auth'], function($routes) {
     $routes->match(['get', 'post'], 'news/edit/(:any)', '\Backend\News::editNews/$1');
     // Users admin
     $routes->get('users', '\Backend\Users::index');
-    $routes->get('users/delete/(:any)', '\Backend\Users::deleteUsers/$1');
+    $routes->get('users/delete/(:any)', '\Backend\Users::deleteUser/$1');
+    // Admin setting
+    $routes->match(['get', 'post'], 'settings/(:any)', '\Backend\Admin::getAdminData');
 });
 
 /**

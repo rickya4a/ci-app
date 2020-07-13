@@ -17,8 +17,8 @@ class Admin extends BaseController {
      */
     public function index() {
         // Create model instances
-        $news = new NewsModel();
-        $user = new UserModel();
+        $news = new NewsModel;
+        $user = new UserModel;
 
         // Count all data summary
         $data['news'] = $news->builder->countAll();
@@ -48,7 +48,7 @@ class Admin extends BaseController {
      */
     public function auth() {
         // Create admin model instance
-        $admin_model = new AdminModel();
+        $admin = new AdminModel;
 
         // Get post data by its name attr
         $username = $this->request->getVar('username');
@@ -66,14 +66,14 @@ class Admin extends BaseController {
             // Create new params as array from username and password
             $args = array($username, $password);
             // Pass the params to model
-            $get_auth = $admin_model->getAdminCredential($args);
+            $get_auth = $admin->getAdminCredential($args);
 
             // Check auth
             if (!empty($get_auth)) {
                 // Create session data
                 $sess_data = [
                     'username' => $username,
-                    'name' => $get_auth[0]->name,
+                    'name' => $get_auth->name,
                     'isLoggedIn' => TRUE,
                     'isAdmin' => TRUE
                 ];
@@ -101,7 +101,7 @@ class Admin extends BaseController {
      */
     public function register() {
         // Create model instance
-        $admin_model = new AdminModel();
+        $admin = new AdminModel;
 
         // Check post data request
         if (empty($this->request->getPost())) {
@@ -123,7 +123,7 @@ class Admin extends BaseController {
                 return redirect()->to('register');
             } else {
                 // Save admin data
-                $save = $admin_model->save([
+                $save = $admin->save([
                     'name' => $this->request->getVar('name'),
                     'username' => $this->request->getVar('username'),
                     'password' => password_hash(
@@ -150,6 +150,82 @@ class Admin extends BaseController {
                             ->with(
                                 'errors',
                                 array('Failed to insert data')
+                            );
+                }
+            }
+        }
+    }
+
+    /**
+     * Get admin data
+     *
+     * @return void
+     */
+    public function getAdminData() {
+        // Create admin instance
+        $admin = new AdminModel;
+
+        // Get username from active session
+        $username = $this->session->get('username');
+
+        // Get admin data
+        $data['admin'] = $admin->getAdminData($username);
+        $data['title'] = 'Admin Settings';
+        $data['content'] = view('backend/profile', $data);
+        echo view($this->backend, $data);
+
+        // Check http method
+        if ($this->request->getMethod() === 'post') {
+            // Check form validation
+            if ($this->validation->run(
+                $this->request->getPost(),
+                'admin_register') === FALSE) {
+                $this->session->setFlashdata(
+                    'errors',
+                    $this->validation->getErrors()
+                );
+                return redirect()->to('settings/'.$username);
+            } else {
+                // Update admin data
+                $items = [
+                    'name' => $this->request->getVar('name'),
+                    'username' => $this->request->getVar('username'),
+                    'password' => password_hash(
+                        $this->request->getVar('password'),
+                        PASSWORD_BCRYPT
+                    )
+                ];
+
+                $update = $admin->updateAdmin($items);
+
+                // Check if data has been saved
+                if ($update !== NULL) {
+                    // Remove current username
+                    $current_session_items = ['username', 'name'];
+                    $this->session->remove($current_session_items);
+
+                    // Set new one
+                    $sess_data = [
+                        'username' => $update->username,
+                        'name' => $update->name,
+                    ];
+                    $this->session->set($sess_data);
+
+                    // Set success flash data
+                    $this->session->setFlashdata(
+                        'success',
+                        'Admin has been updated'
+                    );
+
+                    // Redirect to login page
+                    return redirect()->to(\site_url('backend/dashboard'));
+                } else {
+                    // Redirect to prev route and set error flash data
+                    return redirect()
+                            ->back()
+                            ->with(
+                                'errors',
+                                array('Failed to update data')
                             );
                 }
             }

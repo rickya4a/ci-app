@@ -27,7 +27,7 @@ class News extends BaseController {
      * @param string $slug
      * @return void
      */
-    public function view($slug = null) {
+    public function view(string $slug = NULL) {
         // Create news instance
         $model = new NewsModel();
 
@@ -119,7 +119,13 @@ class News extends BaseController {
         }
     }
 
-    public function editNews($slug) {
+    /**
+     * Edit news entry
+     *
+     * @param string $slug
+     * @return void
+     */
+    public function editNews(string $slug) {
         // Create instanace from model
         $model = new NewsModel();
         // Get all post data
@@ -198,7 +204,7 @@ class News extends BaseController {
      * @param int $id
      * @return void
      */
-    public function deleteNews($id) {
+    public function deleteNews(int $id) {
         // Create new instance
         $model = new NewsModel();
         // Delete news by selected ID

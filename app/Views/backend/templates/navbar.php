@@ -17,7 +17,7 @@
       <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
         <span class="dropdown-item dropdown-header"><?= session('name') ?></span>
         <div class="dropdown-divider"></div>
-        <a href="<?php echo base_url('backend/dashboard') ?>" class="dropdown-item">
+        <a href="<?php echo base_url('backend/settings/'.session('username')) ?>" class="dropdown-item">
           <i class="fas fa-cog mr-2"></i> Settings
         </a>
         <div class="dropdown-divider"></div>

@@ -30,7 +30,7 @@ class Users extends BaseController {
      * @param int $id
      * @return void
      */
-    public function deleteUsers($id) {
+    public function deleteUser(int $id) {
         // Create user class instance
         $user = new UserModel();
 

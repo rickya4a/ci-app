@@ -18,8 +18,8 @@ class NewsModel extends Model {
      * @param string $slug
      * @return array
      */
-    public function getNews($slug = FALSE) {
-        if ($slug === FALSE) {
+    public function getNews(string $slug = null) {
+        if ($slug === null) {
             return $this->builder->get()->getResultArray();
         }
 
@@ -33,14 +33,14 @@ class NewsModel extends Model {
      * @param array $data
      * @return boolean
      */
-    public function updateNews($data) {
+    public function updateNews(array $data) {
         $this->builder->where('id', $data['id']);
         $query = $this->builder->update($data);
 
         if ($query) {
-            return TRUE;
+            return true;
         }
 
-        return FALSE;
+        return false;
     }
 }

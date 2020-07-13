@@ -24,21 +24,57 @@ class AdminModel extends Model {
      * 1 => password
      * @return boolean
      */
-    public function getAdminCredential($params) {
+    public function getAdminCredential(array $params) {
 
         $this->builder->select('username, name, password');
         $this->builder->where('username', $params[0]);
-        $query = $this->builder->get()->getResultObject();
+        $query = $this->builder->get()->getFirstRow();
 
         if (!$query) {
-            return FALSE;
+            return false;
         } else {
-            $verify_pwd = password_verify($params[1], $query[0]->password);
+            $verify_pwd = password_verify($params[1], $query->password);
             if ($verify_pwd) {
                 return $query;
             }
         }
 
-        return FALSE;
+        return false;
+    }
+
+    /**
+     * Get admin data
+     *
+     * @param string $username
+     * @return object
+     */
+    public function getAdminData(string $username) {
+        $this->builder->select();
+        $this->builder->where('username', $username);
+        $query = $this->builder->get()->getFirstRow();
+
+        if ($query) return $query;
+    }
+
+    /**
+     * Update data
+     *
+     * @param array $data
+     * @return object
+     */
+    public function updateAdmin(array $data) {
+        $current_username = session('username');
+
+        $this->builder->where('username', $current_username);
+        $query = $this->builder->update($data);
+
+        if ($query) {
+            $this->builder->select();
+            $this->builder->where('username', $data['username']);
+            $new_data = $this->builder->get()->getFirstRow();
+            return $new_data;
+        }
+
+        return null;
     }
 }
