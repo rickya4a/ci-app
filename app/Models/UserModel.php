@@ -45,7 +45,6 @@ class UserModel extends Model {
      * @return boolean
      */
     public function getUserCredential($params) {
-
         $this->builder->select('username, password');
         $this->builder->where('username', $params[0]);
         $query = $this->builder->get()->getResultObject();
@@ -63,7 +62,6 @@ class UserModel extends Model {
     }
 
     public function getUser($username) {
-
         $this->builder->select('username');
         $this->builder->where('username', $username);
         $query = $this->builder->get()->getRow();
