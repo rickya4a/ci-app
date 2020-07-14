@@ -1,13 +1,13 @@
 <?php namespace Frontend;
 
 use \CodeIgniter\Exceptions\PageNotFoundException;
-
 use App\Controllers\BaseController;
-
 use App\Models\NewsModel;
 
-class Pages extends BaseController {
-    public function view($slug = FALSE) {
+class Pages extends BaseController
+{
+    public function view($slug = false)
+    {
         $model = new NewsModel();
 
         $data['news'] = $model->getNews($slug);

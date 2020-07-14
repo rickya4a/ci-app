@@ -1,19 +1,19 @@
 <?php namespace Frontend;
 
 use App\Models\PemeriksaanModel;
-
 use CodeIgniter\Exceptions\PageNotFoundException;
-
 use App\Controllers\BaseController;
 
-class Pemeriksaan extends BaseController {
+class Pemeriksaan extends BaseController
+{
 
     /**
      * Fetch all data
      *
      * @return void
      */
-    public function index() {
+    public function index()
+    {
         $model = new PemeriksaanModel();
         $data = [
             'pemeriksaan' => $model->getPemeriksaan(),
@@ -30,8 +30,9 @@ class Pemeriksaan extends BaseController {
      * @param string $slug
      * @return void
      */
-    public function view() {
-         $data['title'] = 'JMH | Booking Pemeriksaan';
+    public function view()
+    {
+        $data['title'] = 'JMH | Booking Pemeriksaan';
         $data['content'] = view('pemeriksaan/view', $data);
         echo view('templates/layout', $data);
     }
@@ -41,7 +42,8 @@ class Pemeriksaan extends BaseController {
      *
      * @return void
      */
-    public function create() {
+    public function create()
+    {
         $model = new pemeriksaanModel();
 
         if (! $this->validate([
@@ -56,7 +58,7 @@ class Pemeriksaan extends BaseController {
                 'title' => $this->request->getVar('title'),
                 'slug'	=> url_title($this
                                     ->request
-                                    ->getVar('title'), '-', TRUE),
+                                    ->getVar('title'), '-', true),
                 'body'	=> $this->request->getVar('body')
             ]);
 

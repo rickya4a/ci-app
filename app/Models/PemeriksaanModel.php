@@ -2,7 +2,8 @@
 
 use CodeIgniter\Model;
 
-class PemeriksaanModel extends Model {
+class PemeriksaanModel extends Model
+{
     protected $table = 'examination';
 
     protected $allowedFields = [
@@ -22,7 +23,8 @@ class PemeriksaanModel extends Model {
     ];
 
     // Let there be the constructor
-    function __construct() {
+    public function __construct()
+    {
         $this->db = \Config\Database::connect();
         $this->builder = $this->db->table($this->table);
     }
@@ -35,38 +37,39 @@ class PemeriksaanModel extends Model {
      * 1 => password
      * @return boolean
      */
-    public function getUserCredential($params) {
-
+    public function getUserCredential($params)
+    {
         $this->builder->select('username, password');
         $this->builder->where('username', $params[0]);
         $query = $this->builder->get()->getResultObject();
 
         if (!$query) {
-            return FALSE;
+            return false;
         } else {
             $verify_pwd = password_verify($params[1], $query[0]->password);
             if ($verify_pwd) {
-                return TRUE;
+                return true;
             }
         }
 
-        return FALSE;
+        return false;
     }
 
-    public function getUser($username) {
-
+    public function getUser($username)
+    {
         $this->builder->select('username');
         $this->builder->where('username', $username);
         $query = $this->builder->get()->getRow();
 
         if (!$query) {
-            return FALSE;
+            return false;
         }
 
         return $query;
     }
 
-    public function resetPassword($params) {
+    public function resetPassword($params)
+    {
         $data = [
             'username' => $params[0],
             'password' => password_hash(
@@ -77,9 +80,9 @@ class PemeriksaanModel extends Model {
         $query = $this->builder->update($data);
 
         if ($query) {
-            return TRUE;
+            return true;
         }
 
-        return FALSE;
+        return false;
     }
 }

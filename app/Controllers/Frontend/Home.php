@@ -1,12 +1,12 @@
 <?php namespace Frontend;
 
 use App\Controllers\BaseController;
-
 use App\Models\NewsModel;
 
-class Home extends BaseController {
-
-    public function index() {
+class Home extends BaseController
+{
+    public function index()
+    {
         $model = new NewsModel();
 
         $data['news'] = $model->getNews();

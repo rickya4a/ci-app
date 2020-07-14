@@ -1,15 +1,21 @@
 <?php namespace Config\Services;
 
-class PageService {
-    function __construct() {
+class PageService
+{
+    public function __construct()
+    {
         $this->session = \Config\Services::session();
     }
 
-    public function active($slug) {
-        if (uri_string() === $slug) echo 'active';
+    public function active($slug)
+    {
+        if (uri_string() === $slug) {
+            echo 'active';
+        }
     }
 
-    public function admin_body() {
+    public function admin_body()
+    {
         $uri = \uri_string();
         switch ($uri) {
             case 'backend/login':

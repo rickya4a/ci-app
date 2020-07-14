@@ -1,7 +1,6 @@
 <?php namespace Backend;
 
 use App\Models\UserModel;
-
 use App\Controllers\BaseController;
 
 class Users extends BaseController {

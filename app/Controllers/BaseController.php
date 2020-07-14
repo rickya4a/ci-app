@@ -17,7 +17,8 @@ namespace App\Controllers;
 use CodeIgniter\Controller;
 use Config\Encryption;
 
-class BaseController extends Controller {
+class BaseController extends Controller
+{
 
     /**
      * An array of helpers to be loaded automatically upon

@@ -2,7 +2,8 @@
 
 use CodeIgniter\Model;
 
-class AdminModel extends Model {
+class AdminModel extends Model
+{
     protected $table = 'admin';
 
     protected $allowedFields = [
@@ -11,7 +12,8 @@ class AdminModel extends Model {
         'password'
     ];
 
-    function __construct() {
+    public function __construct()
+    {
         $this->db = \Config\Database::connect();
         $this->builder = $this->db->table($this->table);
     }
@@ -24,8 +26,8 @@ class AdminModel extends Model {
      * 1 => password
      * @return boolean
      */
-    public function getAdminCredential(array $params) {
-
+    public function getAdminCredential(array $params)
+    {
         $this->builder->select('username, name, password');
         $this->builder->where('username', $params[0]);
         $query = $this->builder->get()->getFirstRow();
@@ -48,12 +50,15 @@ class AdminModel extends Model {
      * @param string $username
      * @return object
      */
-    public function getAdminData(string $username) {
+    public function getAdminData(string $username)
+    {
         $this->builder->select();
         $this->builder->where('username', $username);
         $query = $this->builder->get()->getFirstRow();
 
-        if ($query) return $query;
+        if ($query) {
+            return $query;
+        }
     }
 
     /**
@@ -62,7 +67,8 @@ class AdminModel extends Model {
      * @param array $data
      * @return object
      */
-    public function updateAdmin(array $data) {
+    public function updateAdmin(array $data)
+    {
         $current_username = session('username');
 
         $this->builder->where('username', $current_username);
