@@ -51,12 +51,12 @@ class UserModel extends Model
     {
         $this->builder->select('username, password');
         $this->builder->where('username', $params[0]);
-        $query = $this->builder->get()->getResultObject();
+        $query = $this->builder->get()->getFirstRow();
 
         if (!$query) {
             return false;
         } else {
-            $verify_pwd = password_verify($params[1], $query[0]->password);
+            $verify_pwd = password_verify($params[1], $query->password);
             if ($verify_pwd) {
                 return true;
             }
