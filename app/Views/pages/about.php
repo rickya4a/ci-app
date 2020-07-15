@@ -42,7 +42,9 @@
       <div class="col-md-12">
         <header class="title-head">
           <h2>Awesome Doctors Team</h2>
-          <p>Using many font styles canslow down your webpage, so only select the font styles that you</p>
+          <p>Using many font styles canslow down your webpage,
+            so only select the font styles that you
+          </p>
           <div class="line-heading">
             <span class="line-left"></span>
             <span class="line-middle">+</span>
@@ -52,41 +54,83 @@
       </div>
       <div class="col-md-3 col-sm-6 my-team-member wow fadeInUp">
         <div class="my-member-img">
-          <img src="assets/images/team/1.jpg" class="img-responsive" alt="team01">
+          <img
+            src="assets/images/team/1.jpg"
+            class="img-responsive"
+            alt="team01"
+          />
         </div>
         <div class="my-team-detail text-center">
           <h4 class="my-member-name">Turanga Parker</h4>
           <p class="my-member-post">Director</p>
           <div class="my-member-social">
             <ul>
-              <li><a href="#" target="_blank"><i class="fa fa-envelope"></i></a></li>
-              <li><a href="#" target="_blank"><i class="fa fa-facebook"></i></a></li>
-              <li><a href="#" target="_blank"><i class="fa fa-twitter"></i></a></li>
-              <li><a href="#" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+              <li>
+                <a href="#" target="_blank"><i class="fa fa-envelope"></i>
+                </a>
+              </li>
+              <li>
+                <a href="#" target="_blank"><i class="fa fa-facebook"></i>
+                </a>
+              </li>
+              <li>
+                <a href="#" target="_blank"><i class="fa fa-twitter"></i>
+                </a>
+              </li>
+              <li>
+                <a href="#" target="_blank"><i class="fa fa-linkedin"></i>
+                </a>
+              </li>
             </ul>
           </div>
         </div>
       </div>
-      <div class="col-md-3 col-sm-6 my-team-member wow fadeInUp" data-wow-delay=".2s">
+      <div
+        class="col-md-3 col-sm-6 my-team-member wow fadeInUp"
+        data-wow-delay=".2s"
+      >
         <div class="my-member-img">
-          <img src="assets/images/team/2.jpg" class="img-responsive" alt="team02">
+          <img
+            src="assets/images/team/2.jpg"
+            class="img-responsive"
+            alt="team02"
+          />
         </div>
         <div class="my-team-detail text-center">
           <h4 class="my-member-name">Mariya Rayan</h4>
           <p class="my-member-post">Manager</p>
           <div class="my-member-social">
             <ul>
-              <li><a href="#" target="_blank"><i class="fa fa-envelope"></i></a></li>
-              <li><a href="#" target="_blank"><i class="fa fa-facebook"></i></a></li>
-              <li><a href="#" target="_blank"><i class="fa fa-twitter"></i></a></li>
-              <li><a href="#" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+              <li>
+                <a href="#" target="_blank"><i class="fa fa-envelope"></i>
+                </a>
+              </li>
+              <li>
+                <a href="#" target="_blank"><i class="fa fa-facebook"></i>
+                </a>
+              </li>
+              <li>
+                <a href="#" target="_blank"><i class="fa fa-twitter"></i>
+                </a>
+              </li>
+              <li>
+                <a href="#" target="_blank"><i class="fa fa-linkedin"></i>
+                </a>
+              </li>
             </ul>
           </div>
         </div>
       </div>
-      <div class="col-md-3 col-sm-6 my-team-member wow fadeInUp" data-wow-delay=".3s">
+      <div
+        class="col-md-3 col-sm-6 my-team-member wow fadeInUp"
+        data-wow-delay=".3s"
+      >
         <div class="my-member-img">
-          <img src="assets/images/team/3.jpg" class="img-responsive" alt="team03">
+          <img
+            src="assets/images/team/3.jpg"
+            class="img-responsive"
+            alt="team03"
+          />
         </div>
         <div class="my-team-detail text-center">
           <h4 class="my-member-name">Jerry Hu</h4>

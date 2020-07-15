@@ -24,8 +24,12 @@ class NewsModel extends Model
     {
         if ($slug === null) {
             return $this->builder->get()->getResultArray();
+        } elseif ($slug === 'latest') {
+            return $this->builder->orderBy('updated')
+                                 ->get(2)
+                                 ->getResultArray();
         }
-       
+
         return $this->builder->getWhere(['slug' => $slug])
                             ->getFirstRow('array');
     }

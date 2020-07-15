@@ -10,6 +10,7 @@ class Home extends BaseController
         $model = new NewsModel();
 
         $data['news'] = $model->getNews();
+
         $data['title'] = 'JMH | Home';
         $data['content'] = view('pages/home', $data);
         echo view('templates/layout', $data);

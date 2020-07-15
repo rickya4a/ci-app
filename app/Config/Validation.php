@@ -128,7 +128,7 @@ class Validation
     ];
 
     public $news = [
-        'title' => 'required|alpha_numeric_space',
+        'title' => 'required|alpha_numeric_space|is_unique[news.title]',
         'body' => 'required|min_length[5]',
         'image' => 'uploaded[image]|mime_in[image,image/jpg,image/jpeg,image/gif,image/png]|max_size[image,2048]'
     ];

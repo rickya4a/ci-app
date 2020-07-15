@@ -25,7 +25,12 @@
       <?php echo form_open('backend/auth', 'id="myform"') ?>
         <?= csrf_field() ?>
         <div class="input-group mb-3">
-          <input type="username" name="username" class="form-control" placeholder="Username">
+          <input
+            type="username"
+            name="username"
+            class="form-control"
+            placeholder="Username"
+          />
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>
@@ -33,7 +38,12 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" name="password" class="form-control" placeholder="Password">
+          <input
+            type="password"
+            name="password"
+            class="form-control"
+            placeholder="Password"
+          />
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
@@ -43,7 +53,10 @@
         <div class="row">
           <!-- /.col -->
           <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+            <button
+              type="submit"
+              class="btn btn-primary btn-block"
+            >Sign In</button>
           </div>
           <!-- /.col -->
         </div>

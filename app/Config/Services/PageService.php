@@ -9,7 +9,7 @@ class PageService
 
     public function active($slug)
     {
-        if (uri_string() === $slug) {
+        if (\uri_string() === $slug) {
             echo 'active';
         }
     }

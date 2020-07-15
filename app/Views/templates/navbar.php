@@ -56,7 +56,7 @@ $session = service('session');
         >
           <li class="<?php $page->active('/')?>">
             <a href="<?php echo base_url('/') ?>"
-            >Home</a>
+            >Beranda</a>
           </li>
           <li class="<?php $page->active('about')?>">
             <a href="<?php echo base_url('about') ?>"
