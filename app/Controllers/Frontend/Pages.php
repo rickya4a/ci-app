@@ -11,6 +11,7 @@ class Pages extends BaseController {
         $model = new NewsModel();
 
         $data['news'] = $model->getNews($slug);
+        $data['allNews'] = $model->getNews();
         if ($slug === 'about') {
             $data['title'] = 'About';
             $data['content'] = view('pages/about', $data);

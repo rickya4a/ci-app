@@ -22,7 +22,7 @@ class NewsModel extends Model {
         if ($slug === null) {
             return $this->builder->get()->getResultArray();
         }
-
+       
         return $this->builder->getWhere(['slug' => $slug])
                             ->getFirstRow('array');
     }

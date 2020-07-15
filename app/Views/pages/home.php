@@ -84,6 +84,7 @@
             <p><h4><strong>Dokter Kami</strong> </h4></p>
             <br />
             <p class="text-center">Pilih Berdasarkan Nama, Spesialis dan Lainya</p>
+            </br>
             <a href="pickup.php" button class="btn btn-primary" type button="submit">Cari Dokter</button></a>
           </div>
         </div>
