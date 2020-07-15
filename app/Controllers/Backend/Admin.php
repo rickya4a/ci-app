@@ -1,21 +1,20 @@
 <?php namespace Backend;
 
 use App\Models\AdminModel;
-
 use App\Models\UserModel;
-
 use App\Models\NewsModel;
-
 use App\Controllers\BaseController;
 
-class Admin extends BaseController {
+class Admin extends BaseController
+{
 
     /**
      * Admin dashboard
      *
      * @return void
      */
-    public function index() {
+    public function index()
+    {
         // Create model instances
         $news = new NewsModel;
         $user = new UserModel;
@@ -35,7 +34,8 @@ class Admin extends BaseController {
      *
      * @return void
      */
-    public function login() {
+    public function login()
+    {
         $data['content'] = view('backend/login');
         $data['title'] = 'Admin Login';
         echo view($this->backend, $data);
@@ -46,7 +46,8 @@ class Admin extends BaseController {
      *
      * @return void
      */
-    public function auth() {
+    public function auth()
+    {
         // Create admin model instance
         $admin = new AdminModel;
 
@@ -74,8 +75,8 @@ class Admin extends BaseController {
                 $sess_data = [
                     'username' => $username,
                     'name' => $get_auth->name,
-                    'isLoggedIn' => TRUE,
-                    'isAdmin' => TRUE
+                    'isLoggedIn' => true,
+                    'isAdmin' => true
                 ];
 
                 // Set session data
@@ -99,7 +100,8 @@ class Admin extends BaseController {
      *
      * @return void
      */
-    public function register() {
+    public function register()
+    {
         // Create model instance
         $admin = new AdminModel;
 
@@ -115,7 +117,8 @@ class Admin extends BaseController {
             // Check form validation
             if ($this->validation->run(
                 $this->request->getPost(),
-                'admin_register') === FALSE) {
+                'admin_register'
+            ) === false) {
                 $this->session->setFlashdata(
                     'errors',
                     $this->validation->getErrors()
@@ -133,7 +136,7 @@ class Admin extends BaseController {
                 ]);
 
                 // Check if data has been saved
-                if ($save === TRUE) {
+                if ($save === true) {
                     // Set success flash data
                     $this->session->setFlashdata(
                         'success',
@@ -161,7 +164,8 @@ class Admin extends BaseController {
      *
      * @return void
      */
-    public function getAdminData() {
+    public function getAdminData()
+    {
         // Create admin instance
         $admin = new AdminModel;
 
@@ -179,7 +183,8 @@ class Admin extends BaseController {
             // Check form validation
             if ($this->validation->run(
                 $this->request->getPost(),
-                'admin_register') === FALSE) {
+                'admin_register'
+            ) === false) {
                 $this->session->setFlashdata(
                     'errors',
                     $this->validation->getErrors()
@@ -199,7 +204,7 @@ class Admin extends BaseController {
                 $update = $admin->updateAdmin($items);
 
                 // Check if data has been saved
-                if ($update !== NULL) {
+                if ($update !== null) {
                     // Remove current username
                     $current_session_items = ['username', 'name'];
                     $this->session->remove($current_session_items);
@@ -237,7 +242,8 @@ class Admin extends BaseController {
      *
      * @return void
      */
-    public function logout() {
+    public function logout()
+    {
         $this->session->destroy();
         return redirect('backend/login');
     }

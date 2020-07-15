@@ -1,9 +1,7 @@
 <?php namespace Backend;
 
 use App\Models\NewsModel;
-
 use CodeIgniter\Exceptions\PageNotFoundException;
-
 use App\Controllers\BaseController;
 
 class News extends BaseController {

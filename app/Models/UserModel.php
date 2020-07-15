@@ -2,7 +2,8 @@
 
 use CodeIgniter\Model;
 
-class UserModel extends Model {
+class UserModel extends Model
+{
     protected $table = 'users';
 
     protected $allowedFields = [
@@ -20,7 +21,8 @@ class UserModel extends Model {
         'id_no'
     ];
 
-    function __construct() {
+    function __construct()
+    {
         $this->db = \Config\Database::connect();
         $this->builder = $this->db->table($this->table);
     }
@@ -30,7 +32,8 @@ class UserModel extends Model {
      *
      * @return object
      */
-    public function getUsers() {
+    public function getUsers()
+    {
         return $this->builder->select('*')
                              ->get()
                              ->getResultObject();
@@ -44,15 +47,16 @@ class UserModel extends Model {
      * 1 => password
      * @return boolean
      */
-    public function getUserCredential(array $params) {
+    public function getUserCredential(array $params)
+    {
         $this->builder->select('username, password');
         $this->builder->where('username', $params[0]);
-        $query = $this->builder->get()->getResultObject();
+        $query = $this->builder->get()->getFirstRow();
 
         if (!$query) {
             return false;
         } else {
-            $verify_pwd = password_verify($params[1], $query[0]->password);
+            $verify_pwd = password_verify($params[1], $query->password);
             if ($verify_pwd) {
                 return true;
             }
@@ -67,7 +71,8 @@ class UserModel extends Model {
      * @param string $username
      * @return object
      */
-    public function getUser(string $username) {
+    public function getUser(string $username)
+    {
         $this->builder->select('username');
         $this->builder->where('username', $username);
         $query = $this->builder->get()->getRow();
@@ -85,7 +90,8 @@ class UserModel extends Model {
      * @param array $params
      * @return boolean
      */
-    public function resetPassword(array $params) {
+    public function resetPassword(array $params)
+    {
         $data = [
             'username' => $params[0],
             'password' => password_hash(

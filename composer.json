@@ -1,13 +1,13 @@
 {
-    "name": "Medicamp",
+    "name": "ci-app",
     "type": "project",
     "description": "Medicamp Clinic",
     "authors": [
-      {
-        "name": "Ricky Aditya",
-        "email": "aditya_ricky@outlook.com",
-        "role": "Developer/Maintainer"
-      }
+        {
+            "name": "Ricky Aditya",
+            "email": "aditya_ricky@outlook.com",
+            "role": "Developer/Maintainer"
+        }
     ],
     "homepage": "https://codeigniter.com",
     "license": "MIT",

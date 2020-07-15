@@ -1,17 +1,18 @@
 <?php namespace Frontend;
 
 use App\Models\UserModel;
-
 use App\Controllers\BaseController;
 
-class Users extends BaseController {
+class Users extends BaseController
+{
 
     /**
      * User authentication
      *
      * @return void
      */
-    public function auth() {
+    public function auth()
+    {
         $user_model = new UserModel();
 
         $username = $this->request->getVar('username');
@@ -26,11 +27,12 @@ class Users extends BaseController {
             $args = array($username, $password);
             $get_auth = $user_model->getUserCredential($args);
 
-            if ($get_auth === TRUE) {
+            if ($get_auth === true) {
                 $sess_data = [
                     'username' => $username,
-                    'isLoggedIn' => TRUE,
-                    'isAdmin' => FALSE
+                    'name' => $get_auth->name,
+                    'isLoggedIn' => true,
+                    'isAdmin' => false
                 ];
                 $this->session->set($sess_data);
                 return redirect('/');
@@ -50,7 +52,8 @@ class Users extends BaseController {
      *
      * @return void
      */
-    public function register() {
+    public function register()
+    {
         $user_model = new UserModel();
 
         if (empty($this->request->getPost())) {
@@ -60,7 +63,8 @@ class Users extends BaseController {
         } else {
             if ($this->validation->run(
                 $this->request->getPost(),
-                'register') === FALSE) {
+                'register'
+            ) === false) {
                 $this->session->setFlashdata(
                     'errors',
                     $this->validation->getErrors()
@@ -85,7 +89,7 @@ class Users extends BaseController {
                     'status_meried' => $this->request->getVar('status_perkawinan'),
                     'id_no' => $this->request->getVar('no_ktp')
                 ]);
-                if ($save === TRUE) {
+                if ($save === true) {
                     $this->session->setFlashdata(
                         'success',
                         'Berhasil registrasi'
@@ -108,7 +112,8 @@ class Users extends BaseController {
      *
      * @return void
      */
-    public function reset_password() {
+    public function reset_password()
+    {
         $user_model = new UserModel();
 
         $username = $this->request->getPost('username');
@@ -150,7 +155,8 @@ class Users extends BaseController {
      *
      * @return void
      */
-    public function confirm_reset_password() {
+    public function confirm_reset_password()
+    {
         $user_model = new UserModel();
 
         $username = $this->request->getVar('username');
@@ -168,7 +174,7 @@ class Users extends BaseController {
             $args = array($username, $password);
             $save_user = $user_model->resetPassword($args);
 
-            if ($save_user === TRUE) {
+            if ($save_user === true) {
                 $this->session->setFlashdata(
                     'success',
                     'Password berhasil direset'
@@ -191,7 +197,8 @@ class Users extends BaseController {
      *
      * @return void
      */
-    public function logout() {
+    public function logout()
+    {
         $this->session->destroy();
         return redirect()->to('/');
     }
