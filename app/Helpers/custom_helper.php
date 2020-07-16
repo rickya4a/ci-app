@@ -1,6 +1,6 @@
 <?php
 
-if (! function_exists('get_last_segment')) {
+if (! \function_exists('get_last_segment')) {
     /**
      * Get last URI segment
      *
@@ -15,7 +15,7 @@ if (! function_exists('get_last_segment')) {
     }
 }
 
-if (! function_exists('get_latest_news')) {
+if (! \function_exists('get_latest_news')) {
     /**
      * Get latest news
      *

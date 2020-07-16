@@ -7,13 +7,24 @@ class PageService
         $this->session = \Config\Services::session();
     }
 
-    public function active($slug)
+    /**
+     * Set active class
+     *
+     * @param string $slug
+     * @return void
+     */
+    public function active(string $slug)
     {
         if (\uri_string() === $slug) {
             echo 'active';
         }
     }
 
+    /**
+     * Set layout class based on routes
+     *
+     * @return void
+     */
     public function admin_body()
     {
         $uri = \uri_string();

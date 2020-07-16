@@ -24,7 +24,7 @@ class AdminModel extends Model
      * @param array $params
      * 0 => username
      * 1 => password
-     * @return boolean
+     * @return boolean|object
      */
     public function getAdminCredential(array $params)
     {
@@ -65,7 +65,7 @@ class AdminModel extends Model
      * Update data
      *
      * @param array $data
-     * @return object
+     * @return null|object
      */
     public function updateAdmin(array $data)
     {

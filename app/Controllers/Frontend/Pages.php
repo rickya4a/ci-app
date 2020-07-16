@@ -8,7 +8,7 @@ class Pages extends BaseController
 {
     public function view($slug = false)
     {
-        $model = new NewsModel();
+        $model = new NewsModel;
 
         // Get news by its slug
         $data['news'] = $model->getNews($slug);

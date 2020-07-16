@@ -69,7 +69,7 @@ class UserModel extends Model
      * Get user data
      *
      * @param string $username
-     * @return object
+     * @return object|boolean
      */
     public function getUser(string $username)
     {

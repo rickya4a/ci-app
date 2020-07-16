@@ -7,7 +7,7 @@ class Home extends BaseController
 {
     public function index()
     {
-        $model = new NewsModel();
+        $model = new NewsModel;
 
         $data['news'] = $model->getNews();
 
