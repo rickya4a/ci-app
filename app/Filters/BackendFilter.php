@@ -6,12 +6,13 @@ use CodeIgniter\Filters\FilterInterface;
 
 class BackendFilter implements FilterInterface
 {
-    public function before(RequestInterface $request) {
+    public function before(RequestInterface $request)
+    {
         $auth = \Config\Services::auth();
         if (!$auth->isAdminLoggedIn()) {
             $auth->session->setFlashdata(
                 'error',
-                'Login dulu'
+                'You are not authorized'
             );
             return redirect('backend/login');
         }
@@ -21,7 +22,8 @@ class BackendFilter implements FilterInterface
 
     public function after(
         RequestInterface $request,
-        ResponseInterface $response) {
+        ResponseInterface $response
+    ) {
         // Do something here
     }
 }

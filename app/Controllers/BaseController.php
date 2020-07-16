@@ -15,7 +15,6 @@ namespace App\Controllers;
  */
 
 use CodeIgniter\Controller;
-use Config\Encryption;
 
 class BaseController extends Controller
 {
@@ -32,8 +31,11 @@ class BaseController extends Controller
     /**
      * Constructor.
      */
-    public function initController(\CodeIgniter\HTTP\RequestInterface $request, \CodeIgniter\HTTP\ResponseInterface $response, \Psr\Log\LoggerInterface $logger)
-    {
+    public function initController(
+        \CodeIgniter\HTTP\RequestInterface $request,
+        \CodeIgniter\HTTP\ResponseInterface $response,
+        \Psr\Log\LoggerInterface $logger
+    ) {
         // Do Not Edit This Line
         parent::initController($request, $response, $logger);
 
@@ -45,7 +47,7 @@ class BaseController extends Controller
         $this->validation = \Config\Services::validation();
 
         // Load encryption library
-        $config         = new Encryption();
+        $config         = new \Config\Encryption;
         $config->key    = 'qwertyuiopasdfghjklzxcvbnm1234567890';
         $config->driver = 'OpenSSL';
         $this->encrypter = \Config\Services::encrypter($config);

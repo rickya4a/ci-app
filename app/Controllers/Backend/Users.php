@@ -3,16 +3,18 @@
 use App\Models\UserModel;
 use App\Controllers\BaseController;
 
-class Users extends BaseController {
+class Users extends BaseController
+{
 
     /**
      * Users admin
      *
      * @return void
      */
-    public function index() {
+    public function index()
+    {
         // Create user class instance
-        $user = new UserModel();
+        $user = new UserModel;
 
         // Get all registered users
         $data['users'] = $user->getUsers();
@@ -29,9 +31,10 @@ class Users extends BaseController {
      * @param int $id
      * @return void
      */
-    public function deleteUser(int $id) {
+    public function deleteUser(int $id)
+    {
         // Create user class instance
-        $user = new UserModel();
+        $user = new UserModel;
 
         // Delete registered user by selected ID
         $query = $user->delete(['id' => $id]);

@@ -138,7 +138,11 @@
       </div>
       <div class="col-md-3 col-sm-6 my-team-member wow fadeInUp">
         <div class="my-member-img">
-          <img src="<?php echo base_url('assets/images/team/1.jpg') ?>" class="img-responsive" alt="team01">
+          <img
+            src="<?php echo base_url('assets/images/team/1.jpg') ?>"
+            class="img-responsive"
+            alt="team01"
+          />
         </div>
         <div class="my-team-detail text-center">
           <h4 class="my-member-name"><a href ="#">TEST</a></h4>
@@ -170,12 +174,16 @@
           <div class="section-14-box wow fadeInUp">
             <?= img($data['img_path'], FALSE, ['class' => 'img-responsive']) ?>
             <h3 align = "justify">
-              <a href="<?= $data['slug'] ?>"><?= word_limiter($data['title'], 5) ?></a>
+              <a href="<?= $data['slug'] ?>">
+                <?= word_limiter($data['title'], 5) ?>
+              </a>
             </h3>
             <div class="row">
               <div class="col-md-12 col-lg-12">
                 <div class="comments">
-                  <a class="btn btn-primary btn-sm"> <?= date('Y-m-d', strtotime($data['updated'])) ?></a>
+                  <a class="btn btn-primary btn-sm">
+                    <?= date('Y-m-d', strtotime($data['updated'])) ?>
+                  </a>
                   <a
                     href="<?= $data['slug'] ?>"
                     class="btn btn-primary btn-sm"

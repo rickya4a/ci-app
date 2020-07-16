@@ -13,7 +13,7 @@ class Users extends BaseController
      */
     public function auth()
     {
-        $user_model = new UserModel();
+        $user_model = new UserModel;
 
         $username = $this->request->getVar('username');
         $password = $this->request->getVar('password');
@@ -54,7 +54,7 @@ class Users extends BaseController
      */
     public function register()
     {
-        $user_model = new UserModel();
+        $user_model = new UserModel;
 
         if (empty($this->request->getPost())) {
             $data['title'] = 'User Registration';
@@ -114,7 +114,7 @@ class Users extends BaseController
      */
     public function reset_password()
     {
-        $user_model = new UserModel();
+        $user_model = new UserModel;
 
         $username = $this->request->getPost('username');
 
@@ -157,7 +157,7 @@ class Users extends BaseController
      */
     public function confirm_reset_password()
     {
-        $user_model = new UserModel();
+        $user_model = new UserModel;
 
         $username = $this->request->getVar('username');
         $password = $this->request->getVar('password');

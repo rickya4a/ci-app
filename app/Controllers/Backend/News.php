@@ -4,15 +4,17 @@ use App\Models\NewsModel;
 use CodeIgniter\Exceptions\PageNotFoundException;
 use App\Controllers\BaseController;
 
-class News extends BaseController {
+class News extends BaseController
+{
 
     /**
      * Fetch all data
      *
      * @return void
      */
-    public function index() {
-        $model = new NewsModel();
+    public function index()
+    {
+        $model = new NewsModel;
         $data['news'] = $model->getNews();
         $data['title'] = 'News';
         $data['content'] = view('backend/pages/index', $data);
@@ -25,9 +27,10 @@ class News extends BaseController {
      * @param string $slug
      * @return void
      */
-    public function view(string $slug = NULL) {
+    public function view(string $slug = null)
+    {
         // Create news instance
-        $model = new NewsModel();
+        $model = new NewsModel;
 
         // Get news by selected slug
         $data['news'] = $model->getNews($slug);
@@ -52,9 +55,10 @@ class News extends BaseController {
      *
      * @return void
      */
-    public function create() {
+    public function create()
+    {
         // Create news instance
-        $model = new NewsModel();
+        $model = new NewsModel;
         // Fetch all post data
         $data = $this->request->getPost();
 
@@ -66,7 +70,7 @@ class News extends BaseController {
             $data['content'] = view('backend/pages/create', $data);
             return view($this->backend, $data);
         } else {
-            if ($this->validation->run($data, 'news') === FALSE) {
+            if ($this->validation->run($data, 'news') === false) {
                 // Set error flash data
                 $this->session->setFlashdata(
                     'errors',
@@ -81,7 +85,7 @@ class News extends BaseController {
                 $file_name = $image->getRandomName();
 
                 // Set news slug
-                $data['slug'] = \url_title($data['title'], '-', TRUE);
+                $data['slug'] = \url_title($data['title'], '-', true);
                 // define image relative path
                 $data['img_path'] = 'uploads/'.$file_name;
 
@@ -94,7 +98,7 @@ class News extends BaseController {
                 ]);
 
                 // Check if data has been saved
-                if ($save === TRUE) {
+                if ($save === true) {
                     // Save image to WRITEPATH.'uploads'
                     $image->move(ROOTPATH . 'public/uploads', $file_name);
 
@@ -123,9 +127,10 @@ class News extends BaseController {
      * @param string $slug
      * @return void
      */
-    public function editNews(string $slug) {
+    public function editNews(string $slug)
+    {
         // Create instanace from model
-        $model = new NewsModel();
+        $model = new NewsModel;
         // Get all post data
         $data = $this->request->getPost();
 
@@ -139,7 +144,7 @@ class News extends BaseController {
             $data['content'] = view('backend/pages/edit', $data);
             return view($this->backend, $data);
         } else {
-            if ($this->validation->run($data, 'news') === FALSE) {
+            if ($this->validation->run($data, 'news') === false) {
                 // Set error if errrors occured
                 $this->session->setFlashdata(
                     'errors',
@@ -154,7 +159,7 @@ class News extends BaseController {
                 $file_name = $image->getRandomName();
 
                 // Set news slug
-                $data['slug'] = \url_title($data['title'], '-', TRUE);
+                $data['slug'] = \url_title($data['title'], '-', true);
                 // Define image relative path
                 $data['img_path'] = 'uploads/'.$file_name;
 
@@ -173,7 +178,7 @@ class News extends BaseController {
                 // Update news data
                 $update = $model->updateNews($news);
 
-                if ($update === TRUE) {
+                if ($update === true) {
                     // Save image to WRITEPATH.'uploads'
                     $image->move(ROOTPATH . 'public/uploads', $file_name);
 
@@ -202,9 +207,10 @@ class News extends BaseController {
      * @param int $id
      * @return void
      */
-    public function deleteNews(int $id) {
+    public function deleteNews(int $id)
+    {
         // Create new instance
-        $model = new NewsModel();
+        $model = new NewsModel;
         // Delete news by selected ID
         $query = $model->delete(['id' => $id]);
 

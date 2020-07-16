@@ -8,11 +8,14 @@ class Pages extends BaseController
 {
     public function view($slug = false)
     {
-        $model = new NewsModel();
+        $model = new NewsModel;
 
+        // Get news by its slug
         $data['news'] = $model->getNews($slug);
-        $data['allNews'] = $model->limit(5)->getNews();
-        if ($slug === 'about') {
+        // Get all news
+        $data['allNews'] = $model->getNews();
+
+        if ($slug === 'about') {;
             $data['title'] = 'About';
             $data['content'] = view('pages/about', $data);
             echo view('templates/layout', $data);

@@ -4,7 +4,9 @@
 
   <!-- Main content -->
   <section class="content">
-    <?php echo form_open_multipart('backend/news/edit/'.$news['slug'], 'id="myform"') ?>
+    <?php echo form_open_multipart(
+      'backend/news/edit/'.$news['slug'],
+      'id="myform"') ?>
       <?= csrf_field() ?>
       <div class="row">
         <div class="col-md-12">
@@ -16,9 +18,13 @@
               <h3 class="card-title">News</h3>
 
               <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip"
-                  title="Collapse">
-                  <i class="fas fa-minus"></i></button>
+                <button
+                  type="button"
+                  class="btn btn-tool"
+                  data-card-widget="collapse"
+                  data-toggle="tooltip"
+                  title="Collapse"
+                ><i class="fas fa-minus"></i></button>
               </div>
             </div>
             <div class="card-body">
@@ -28,7 +34,8 @@
                   type="text"
                   id="inputName"
                   name="title"
-                  value="<?php if (!empty($news['title'])) echo $news['title'] ?>"
+                  value="<?php if (!empty($news['title']))
+                    echo $news['title'] ?>"
                   class="form-control"
                 />
               </div>
@@ -44,7 +51,8 @@
                     border: 1px solid #dddddd;
                     padding: 10px;"
                 >
-                  <?php if (!empty($news['body'])) echo $news['body'] ?>
+                  <?php if (!empty($news['body']))
+                    echo $news['body'] ?>
                 </textarea>
               </div>
               <div class="form-group">
@@ -57,7 +65,10 @@
                       name="image"
                       id="exampleInputFile"
                     />
-                    <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                    <label
+                      class="custom-file-label"
+                      for="exampleInputFile"
+                    >Choose file</label>
                   </div>
                 </div>
               </div>
@@ -69,8 +80,15 @@
       </div>
       <div class="row">
         <div class="col-12">
-          <a href="<?php echo base_url('backend/news') ?>" class="btn btn-danger">Cancel</a>
-          <input type="submit" value="Create" class="btn btn-success float-right">
+          <a
+            href="<?php echo base_url('backend/news') ?>"
+            class="btn btn-danger"
+          >Cancel</a>
+          <input
+            type="submit"
+            value="Create"
+            class="btn btn-success float-right"
+          />
         </div>
       </div>
     <?php echo form_close() ?>

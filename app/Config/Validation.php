@@ -2,36 +2,36 @@
 
 class Validation
 {
-	//--------------------------------------------------------------------
-	// Setup
-	//--------------------------------------------------------------------
+    //--------------------------------------------------------------------
+    // Setup
+    //--------------------------------------------------------------------
 
-	/**
-	 * Stores the classes that contain the
-	 * rules that are available.
-	 *
-	 * @var array
-	 */
-	public $ruleSets = [
-		\CodeIgniter\Validation\Rules::class,
-		\CodeIgniter\Validation\FormatRules::class,
-		\CodeIgniter\Validation\FileRules::class,
-		\CodeIgniter\Validation\CreditCardRules::class,
-	];
+    /**
+     * Stores the classes that contain the
+     * rules that are available.
+     *
+     * @var array
+     */
+    public $ruleSets = [
+        \CodeIgniter\Validation\Rules::class,
+        \CodeIgniter\Validation\FormatRules::class,
+        \CodeIgniter\Validation\FileRules::class,
+        \CodeIgniter\Validation\CreditCardRules::class,
+    ];
 
-	/**
-	 * Specifies the views that are used to display the
-	 * errors.
-	 *
-	 * @var array
-	 */
-	public $templates = [
-		'list'   => 'CodeIgniter\Validation\Views\list',
+    /**
+     * Specifies the views that are used to display the
+     * errors.
+     *
+     * @var array
+     */
+    public $templates = [
+        'list'   => 'CodeIgniter\Validation\Views\list',
         'single' => 'CodeIgniter\Validation\Views\single'
-	];
+    ];
 
-	//--------------------------------------------------------------------
-	// Rules
+    //--------------------------------------------------------------------
+    // Rules
     //--------------------------------------------------------------------
     public $register = [
         'nama_pasien' => 'required|alpha_space|max_length[50]',
@@ -130,7 +130,7 @@ class Validation
     ];
 
     public $news = [
-        'title' => 'required|alpha_numeric_space',
+        'title' => 'required|alpha_numeric_space|is_unique[news.title]',
         'body' => 'required|min_length[5]',
         'image' => 'uploaded[image]|mime_in[image,image/jpg,image/jpeg,image/gif,image/png]|max_size[image,2048]'
     ];

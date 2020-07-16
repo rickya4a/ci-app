@@ -6,7 +6,8 @@ use CodeIgniter\Filters\FilterInterface;
 
 class UserFilter implements FilterInterface
 {
-    public function before(RequestInterface $request) {
+    public function before(RequestInterface $request)
+    {
         $auth = \Config\Services::auth();
         if (!$auth->isLoggedIn()) {
             return redirect('backend/login');
@@ -17,7 +18,8 @@ class UserFilter implements FilterInterface
 
     public function after(
         RequestInterface $request,
-        ResponseInterface $response) {
+        ResponseInterface $response
+    ) {
         // Do something here
     }
 }

@@ -1,10 +1,13 @@
+    <?php $latestNews = get_latest_news() ?>
     <section id="footer-top" class="footer-top">
       <div class="container">
         <div class="row">
           <div class="col-md-3 col-lg-3">
             <div class="footer-top-box">
-              <h4>About Us</h4>
-              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text</p>
+              <h4>Tentang Kami</h4>
+              <p>Lorem Ipsum is simply dummy text of the printing and
+                typesetting industry. Lorem Ipsum has been the
+                industry's standard dummy text</p>
             </div>
             <div class="footer-top-box">
               <h4>Office Hour</h4>
@@ -14,36 +17,35 @@
           </div>
           <div class="col-md-3 col-lg-3">
             <div class="footer-top-box">
-              <h4>Latest Posts</h4>
+              <h4>Postingan Terbaru</h4>
               <ul>
+                <?php foreach ($latestNews as $data) { ?>
                 <li>
                   <div class="recent-post-widget">
-                    <a href="#" class="widget-img-thumb">
-                      <img src="assets/images/post-1.jpg" class="img-responsive">
-                    </a>
+                    <a
+                      href="<?= esc($data['slug']) ?>"
+                      class="widget-img-thumb"
+                    ><?= img(
+                      $data['img_path'],
+                      false,
+                      ['class' => 'img-responsive']) ?></a>
                     <div class="widget-content">
-                      <h5><a href="#" class="sidebar-item-title">Enterprise Video Solutions</a></h5>
-                      <a href="#">
-                        <p class="widget-date">Posted: 3 day ago</p>
-                      </a>
+                      <h5>
+                          <a
+                            href="<?= esc($data['slug']) ?>"
+                            class="sidebar-item-title"
+                          ><?= esc($data['title']) ?></a>
+                      </h5>
+                      <p
+                        class="widget-date"
+                      >Posted: <?= date(
+                        'd F Y H:i',
+                        strtotime($data['updated'])) ?></p>
                     </div>
                     <div class="clearfix"></div>
                   </div>
                 </li>
-                <li>
-                  <div class="recent-post-widget">
-                    <a href="#" class="widget-img-thumb">
-                      <img src="assets/images/post-2.jpg" class="img-responsive">
-                    </a>
-                    <div class="widget-content">
-                      <h5><a href="#" class="sidebar-item-title">Medical Instruments</a></h5>
-                      <a href="#">
-                        <p class="widget-date">Posted: 6 month ago</p>
-                      </a>
-                    </div>
-                    <div class="clearfix"></div>
-                  </div>
-                </li>
+                <?php } ?>
               </ul>
             </div>
           </div>
@@ -72,7 +74,11 @@
                   <div class="input-holder">
                     <input type="email" placeholder="Enter Valid Email Address">
                     <label> <i class="fa fa-location-arrow fa-2x"></i>
-                      <input class="submit-bgcolor" type="submit" value="submit">
+                      <input
+                        class="submit-bgcolor"
+                        type="submit"
+                        value="submit"
+                      />
                     </label>
                   </div>
                 </form>
@@ -86,7 +92,9 @@
       <div class="container">
         <div class="row">
           <div class="col-md-9 col-lg-9">
-            <div class="copyright">Copyright &copy; 2016. All Rights Reserved</div>
+            <div
+              class="copyright"
+            >Copyright &copy; 2016. All Rights Reserved</div>
           </div>
           <div class="col-lg-3">
             <ul class="list-inline social-buttons">

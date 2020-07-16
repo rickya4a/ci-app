@@ -7,6 +7,11 @@ class AuthService
         $this->session = \Config\Services::session();
     }
 
+    /**
+     * Check user auth
+     *
+     * @return boolean
+     */
     public function isLoggedIn()
     {
         if ($this->session->get('isLoggedIn')) {
@@ -14,6 +19,11 @@ class AuthService
         }
     }
 
+    /**
+     * Check admin auth
+     *
+     * @return boolean
+     */
     public function isAdminLoggedIn()
     {
         if ($this->session->get('isAdmin')) {
