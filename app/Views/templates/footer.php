@@ -5,7 +5,9 @@
           <div class="col-md-3 col-lg-3">
             <div class="footer-top-box">
               <h4>Tentang Kami</h4>
-              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text</p>
+              <p>Lorem Ipsum is simply dummy text of the printing and
+                typesetting industry. Lorem Ipsum has been the
+                industry's standard dummy text</p>
             </div>
             <div class="footer-top-box">
               <h4>Office Hour</h4>
@@ -20,12 +22,25 @@
                 <?php foreach ($latestNews as $data) { ?>
                 <li>
                   <div class="recent-post-widget">
-                    <a href="<?= esc($data['slug']) ?>" class="widget-img-thumb">
-                      <?= img($data['img_path'], false, ['class' => 'img-responsive'])  ?>
-                    </a>
+                    <a
+                      href="<?= esc($data['slug']) ?>"
+                      class="widget-img-thumb"
+                    ><?= img(
+                      $data['img_path'],
+                      false,
+                      ['class' => 'img-responsive']) ?></a>
                     <div class="widget-content">
-                      <h5><a href="<?= esc($data['slug']) ?>" class="sidebar-item-title"><?= esc($data['title']) ?></a></h5>
-                      <p class="widget-date">Posted: <?= date('d F Y H:i', strtotime($data['updated'])) ?></p>
+                      <h5>
+                          <a
+                            href="<?= esc($data['slug']) ?>"
+                            class="sidebar-item-title"
+                          ><?= esc($data['title']) ?></a>
+                      </h5>
+                      <p
+                        class="widget-date"
+                      >Posted: <?= date(
+                        'd F Y H:i',
+                        strtotime($data['updated'])) ?></p>
                     </div>
                     <div class="clearfix"></div>
                   </div>
@@ -59,7 +74,11 @@
                   <div class="input-holder">
                     <input type="email" placeholder="Enter Valid Email Address">
                     <label> <i class="fa fa-location-arrow fa-2x"></i>
-                      <input class="submit-bgcolor" type="submit" value="submit">
+                      <input
+                        class="submit-bgcolor"
+                        type="submit"
+                        value="submit"
+                      />
                     </label>
                   </div>
                 </form>
@@ -73,7 +92,9 @@
       <div class="container">
         <div class="row">
           <div class="col-md-9 col-lg-9">
-            <div class="copyright">Copyright &copy; 2016. All Rights Reserved</div>
+            <div
+              class="copyright"
+            >Copyright &copy; 2016. All Rights Reserved</div>
           </div>
           <div class="col-lg-3">
             <ul class="list-inline social-buttons">
