@@ -42,6 +42,8 @@ class Validation
         'jenis_kelamin' => 'required',
         'tanggal_lahir' => 'required',
         'tempat_lahir' => 'required',
+        'agama' => 'required',
+        'status_perkawinan' => 'required',
         'alamat' => 'required|alpha_numeric_punct|max_length[255]',
         'no_ktp' => 'required|numeric|exact_length[16]',
     ];

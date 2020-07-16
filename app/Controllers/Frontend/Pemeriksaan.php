@@ -37,48 +37,9 @@ class Pemeriksaan extends BaseController
         echo view('templates/layout', $data);
     }
 
-    /**
-     * Create new entry
-     *
-     * @return void
-     */
+   
     public function create()
     {
-        $model = new pemeriksaanModel();
 
-        if (! $this->validate([
-            'title' => 'required|min_length[3]|max_length[255]',
-            'body'	=> 'required'
-        ])) {
-            $data['title'] = 'JMH | Booking Pemeriksaan';
-            $data['content'] = view('pemeriksaan/create');
-            echo view('templates/layout', $data);
-        } else {
-            $save = $model->save([
-                'title' => $this->request->getVar('title'),
-                'slug'	=> url_title($this
-                                    ->request
-                                    ->getVar('title'), '-', true),
-                'body'	=> $this->request->getVar('body')
-            ]);
-
-            if ($save === true) {
-                $this->session->setFlashdata(
-                    'success',
-                    'pemeriksaan item created successfully'
-                );
-
-                $data['success'] = $this->session->get('success');
-                echo view('pemeriksaan/success', $data);
-            } else {
-                $this->session->setFlashdata(
-                    'error',
-                    'Failed to insert data'
-                );
-
-                $data['error'] = $this->session->get('error');
-                echo view('pemeriksaan/error', $data);
-            }
-        }
     }
 }

@@ -2,17 +2,15 @@
 
 use CodeIgniter\Model;
 
-class NewsModel extends Model
-{
+class NewsModel extends Model {
     protected $table = 'news';
 
     protected $allowedFields = ['title', 'slug', 'img_path', 'body'];
 
-    function __construct()
-    {
+    function __construct() {
         $this->db = \Config\Database::connect();
         $this->builder = $this->db->table($this->table);
-    }
+   }
 
     /**
      * Fetch data
@@ -20,12 +18,11 @@ class NewsModel extends Model
      * @param string $slug
      * @return array
      */
-    public function getNews(string $slug = null)
-    {
+    public function getNews(string $slug = null) {
         if ($slug === null) {
             return $this->builder->get()->getResultArray();
         }
-       
+        
         return $this->builder->getWhere(['slug' => $slug])
                             ->getFirstRow('array');
     }
@@ -36,8 +33,7 @@ class NewsModel extends Model
      * @param array $data
      * @return boolean
      */
-    public function updateNews(array $data)
-    {
+    public function updateNews(array $data) {
         $this->builder->where('id', $data['id']);
         $query = $this->builder->update($data);
 
