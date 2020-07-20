@@ -20,7 +20,7 @@
     <!-- Fonts Awesome -->
     <?= link_tag('assets/css/font-awesome.min.css') ?>
     <!-- Google Fonts -->
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,800italic,800,600italic,600,400italic,700,700italic' rel='stylesheet' type='text/css'>
+    <!-- <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,800italic,800,600italic,600,400italic,700,700italic' rel='stylesheet' type='text/css'> -->
     <!-- animate Effect -->
     <?= link_tag('assets/css/animate.css') ?>
     <!-- Main CSS -->

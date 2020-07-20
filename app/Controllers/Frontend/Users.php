@@ -30,7 +30,6 @@ class Users extends BaseController
             if ($get_auth === true) {
                 $sess_data = [
                     'username' => $username,
-                    'name' => $get_auth->name,
                     'isLoggedIn' => true,
                     'isAdmin' => false
                 ];

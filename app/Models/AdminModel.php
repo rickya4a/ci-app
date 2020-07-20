@@ -56,9 +56,7 @@ class AdminModel extends Model
         $this->builder->where('username', $username);
         $query = $this->builder->get()->getFirstRow();
 
-        if ($query) {
-            return $query;
-        }
+        if ($query) return $query;
     }
 
     /**

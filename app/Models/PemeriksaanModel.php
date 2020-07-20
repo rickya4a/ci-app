@@ -61,11 +61,7 @@ class PemeriksaanModel extends Model
         $this->builder->where('username', $username);
         $query = $this->builder->get()->getRow();
 
-        if (!$query) {
-            return false;
-        }
-
-        return $query;
+        return ($query ? $query : false);
     }
 
     public function resetPassword($params)
@@ -79,10 +75,6 @@ class PemeriksaanModel extends Model
         ];
         $query = $this->builder->update($data);
 
-        if ($query) {
-            return true;
-        }
-
-        return false;
+        return ($query ? $query : false);
     }
 }

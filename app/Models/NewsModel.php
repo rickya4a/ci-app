@@ -40,10 +40,6 @@ class NewsModel extends Model {
         $this->builder->where('id', $data['id']);
         $query = $this->builder->update($data);
 
-        if ($query) {
-            return true;
-        }
-
-        return false;
+        return ($query ? true : false);
     }
 }

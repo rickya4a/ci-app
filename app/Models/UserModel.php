@@ -53,14 +53,7 @@ class UserModel extends Model
         $this->builder->where('username', $params[0]);
         $query = $this->builder->get()->getFirstRow();
 
-        if (!$query) {
-            return false;
-        } else {
-            $verify_pwd = password_verify($params[1], $query->password);
-            if ($verify_pwd) {
-                return true;
-            }
-        }
+        if ($query) return password_verify($params[1], $query->password);
 
         return false;
     }
@@ -77,11 +70,7 @@ class UserModel extends Model
         $this->builder->where('username', $username);
         $query = $this->builder->get()->getRow();
 
-        if (!$query) {
-            return false;
-        }
-
-        return $query;
+        return (!$query ? false : $query);
     }
 
     /**
@@ -101,10 +90,6 @@ class UserModel extends Model
         ];
         $query = $this->builder->update($data);
 
-        if ($query) {
-            return true;
-        }
-
-        return false;
+        return ($query ? true : false);
     }
 }
