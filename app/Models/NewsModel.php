@@ -10,7 +10,7 @@ class NewsModel extends Model {
     function __construct() {
         $this->db = \Config\Database::connect();
         $this->builder = $this->db->table($this->table);
-   }
+    }
 
     /**
      * Fetch data
