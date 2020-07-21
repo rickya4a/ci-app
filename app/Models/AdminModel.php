@@ -32,16 +32,10 @@ class AdminModel extends Model
         $this->builder->where('username', $params[0]);
         $query = $this->builder->get()->getFirstRow();
 
-        if (!$query) {
-            return false;
-        } else {
-            $verify_pwd = password_verify($params[1], $query->password);
-            if ($verify_pwd) {
-                return $query;
-            }
-        }
+        if (!$query) return false;
 
-        return false;
+        $verify_pwd = password_verify($params[1], $query->password);
+        if ($verify_pwd) return $query;
     }
 
     /**

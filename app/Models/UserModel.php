@@ -70,7 +70,7 @@ class UserModel extends Model
         $this->builder->where('username', $username);
         $query = $this->builder->get()->getRow();
 
-        return (!$query ? false : $query);
+        return ($query ? $query : false);
     }
 
     /**
